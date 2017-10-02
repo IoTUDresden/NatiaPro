@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Prototype_05.App" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.Enums" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.Error" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGIAAAIAAAAAQAAABAAAQAIAEAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Error.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceControl" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CICkoIBIgAQAAgIEgIQACAACAAAAQAABQgCEggFgAAA=</HashCode>
+      <FileName>InstanceControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceMiniControl" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAAAEAAAIAAAAAAAAIAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>InstanceMiniControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceOverviewControl" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAIAMAQAKgEAAAAAAAAAAAAAAAAIACABEIAIAA=</HashCode>
+      <FileName>InstanceOverviewControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.Menu" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgQAAEoAINACEAgACJAKAAJEkAAcAADSMAAHAAyRBI=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.MenuThreeOptions" Collapsed="true">
+    <Position X="15" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAABAAIAAAAAAAAAAAAAAAAAgABUAAAAAAAEAAwRAA=</HashCode>
+      <FileName>MenuThreeOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.MenuTwoOptions" Collapsed="true">
+    <Position X="17.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAABAAIAAAAAAAAAAAAAAAAAgABUAAAAAAAEAAwRAA=</HashCode>
+      <FileName>MenuTwoOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelAddingPanel" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelAddingPanel.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelHistoryControl" Collapsed="true">
+    <Position X="19" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAASAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelHistoryControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelItem" Collapsed="true">
+    <Position X="20.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAKBAMAAAAggkEUIQAIAQCAFQBhAIARAhSkABwCFA=</HashCode>
+      <FileName>ModelItem.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelOverviewArea" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAIAAgAAAAAQAAQAAAAAAAAQAAQEAAAAABAAABAg=</HashCode>
+      <FileName>ModelOverviewArea.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelOverviewControl" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QBDKIAhIAAIBUgQWASRAYBACIoEpQAIACEGURUAiBAg=</HashCode>
+      <FileName>ModelOverviewControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ProcessItem" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAQAAAAAAABAAAQAAAAAEAAAAIAAAAAAAAA=</HashCode>
+      <FileName>ProcessItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.RunningInstancesArea" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAIAAgAAAAAQAAQAAAAAAAAQAAAEAAAAABAAABAg=</HashCode>
+      <FileName>RunningInstancesArea.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.RunningInstancesControl" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>SAAoCIgACgGAQgYFCQBAAAwAA4AAgAiQAACETIITByA=</HashCode>
+      <FileName>RunningInstancesControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.SurfaceWindow1" Collapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EkAAhBgKikAQUACQfYAEAYgAgQoEkAkEQAIEIEARIJA=</HashCode>
+      <FileName>SurfaceWindow1.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.SystemOverviewArea" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAAIAAgAAAAAQAAQAAAAAAAAQAAAEAAAAABAAABAg=</HashCode>
+      <FileName>SystemOverviewArea.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.SystemStateOverviewControl" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAgwAIQBABAAAABAAAAAAAIACBABABAA=</HashCode>
+      <FileName>SystemStateOverviewControl.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstanceControlPort" Collapsed="true">
+    <Position X="1.25" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InstanceData\InstanceControlPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstanceDataPort" Collapsed="true">
+    <Position X="3.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>InstanceData\InstanceDataPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstanceEndDataPort" Collapsed="true">
+    <Position X="2.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InstanceData\InstanceEndDataPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstancePort" Collapsed="true">
+    <Position X="2.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACIAAAAAAAAAAAAABAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>InstanceData\InstancePort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstanceStartDataPort" Collapsed="true">
+    <Position X="4.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InstanceData\InstanceStartDataPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstanceSubstep" Collapsed="true">
+    <Position X="6" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>InstanceData\InstanceSubstep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.InstanceTransition" Collapsed="true">
+    <Position X="8" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAABAAAQAAAAAAAAAAAgAEAAAAAA=</HashCode>
+      <FileName>InstanceData\InstanceTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.InstanceData.ProcessInstance" Collapsed="true">
+    <Position X="6" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIABAIBAAAARAAgJECCQAMAAAEAAAAYAABABAAAA=</HashCode>
+      <FileName>InstanceData\ProcessInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.ControlPort" Collapsed="true">
+    <Position X="1.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelData\ControlPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.DataPort" Collapsed="true">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelData\DataPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.EndDataPort" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelData\EndDataPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.Port" Collapsed="true">
+    <Position X="2.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACIAAAgAAAAAAAAABAAAQAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>ModelData\Port.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.ProcessModel" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCIABAAAQAAAQAAgBEAiQAEAAAEAAAAYAAAAAIAAA=</HashCode>
+      <FileName>ModelData\ProcessModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.StartDataPort" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelData\StartDataPort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.Substep" Collapsed="true">
+    <Position X="6.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>ModelData\Substep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.ModelData.Transition" Collapsed="true">
+    <Position X="5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAABAAAQAAAAAAAABAAgAEAAAAAA=</HashCode>
+      <FileName>ModelData\Transition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.Properties.Resources" Collapsed="true">
+    <Position X="20.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prototype_05.Properties.Settings" Collapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAACAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

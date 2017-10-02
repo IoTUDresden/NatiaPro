@@ -1,0 +1,376 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+	xmlns:local="clr-namespace:Prototype_05"
+	mc:Ignorable="d"
+	x:Class="Prototype_05.StartInstancePanel"
+	x:Name="UserControl"
+	Width="300" Height="735.5"> <!-- 650 -->
+
+	<Grid x:Name="MainGrid" PreviewTouchDown="OptionTouchDown" PreviewTouchMove="OptionTouchMove" PreviewTouchUp="OptionTouchUp">
+		<Grid.Background>
+			<SolidColorBrush Color="#FF453529"/>
+		</Grid.Background>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="46"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="125"/>
+		</Grid.RowDefinitions>
+		
+		<TextBox x:Name="TitleHeader" Grid.Row="0" Text="Create  new instance of:" FontSize="13" Margin="0" Height="27"
+			Background="#FF2F1D0E" Padding="10,3,1,5" VerticalAlignment="Top" Style="{DynamicResource Item_TextBoxHeader_Name}" />
+		<TextBox x:Name="TitleHeader2" Grid.Row="0" Text="Probably long Process Model Name" FontSize="13" Margin="0" Height="23"
+			Background="#FF2F1D0E" Padding="10,1,1,4" VerticalAlignment="Bottom" Style="{DynamicResource Item_TextBoxHeader_Name}" />
+				
+		<Grid x:Name="NumericGrid" Grid.Row="1" Margin="0,5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<Path x:Name="NumericPath" StrokeThickness="1" Grid.RowSpan="2" Stroke="Gray" Data="M30,15 L10,15 L10,85 L290,85 L290,15 L40,15"/>
+			
+			<TextBox x:Name="Numeric1Text" Grid.Row="0" Text="Numeric Parameter" Style="{DynamicResource StartInstanceTextBox}" />
+			<TextBox x:Name="SliderValueText" Text="76.4" Grid.Row="1"  Style="{DynamicResource StartInstanceTextBox}" HorizontalAlignment="Right" Margin="21,-18,21,0" VerticalAlignment="Center"/>
+			
+			<s:SurfaceSlider x:Name="surfaceSlider" Grid.Row="1" Minimum="0" Maximum="100" Value="76.4" TickPlacement="BottomRight" TickFrequency="20"
+				LargeChange="5" SmallChange="1" Margin="9,0,0,5" Width="225" Style="{DynamicResource NumericValueSliderStyle}" HorizontalAlignment="Left" ValueChanged="NumericSliderValueChanged"/>
+				
+		</Grid>
+				
+		<Grid x:Name="NumericGrid2" Grid.Row="2" Margin="0,5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<Path StrokeThickness="1" Grid.RowSpan="2" Stroke="Gray" Data="M30,15 L10,15 L10,85 L290,85 L290,15 L40,15"/>
+			
+			<TextBox x:Name="Numeric2Text" Grid.Row="0" Text="Numeric Parameter2" Style="{DynamicResource StartInstanceTextBox}" />
+			<TextBox x:Name="SliderValueText2" Text="3" Grid.Row="1"  Style="{DynamicResource StartInstanceTextBox}" HorizontalAlignment="Right" Margin="21,-18,21,0" VerticalAlignment="Center"/>
+			
+			<s:SurfaceSlider x:Name="surfaceSlider2" Grid.Row="1" Minimum="1" Maximum="6" Value="3" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True"
+				LargeChange="1" SmallChange="1" Margin="9,0,0,5" Width="225" Style="{DynamicResource NumericValueSliderStyle}" HorizontalAlignment="Left" ValueChanged="NumericSlider2ValueChanged"/>
+				
+		</Grid>
+				
+		<Grid x:Name="TimeGrid" Grid.Row="3" Margin="0,5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<Path StrokeThickness="1" Grid.RowSpan="2" Stroke="Gray" Data="M30,15 L10,15 L10,150 L290,150 L290,15 L40,15"/>
+			
+			<TextBox x:Name="TimeGridText" Grid.Row="0" Text="Time-based Parameter" Style="{DynamicResource StartInstanceTextBox}" />
+			
+			<Image Grid.Row="1" Width="80" Height="59" HorizontalAlignment="Right" Margin="0,0,52,0" Source="../Images/zeit2.png" />
+						
+			<Image Grid.Row="1" Width="100" Height="100" HorizontalAlignment="Left" Margin="31,0,0,0" Source="../Images/uhr2.png" />
+			<s:ScatterView Grid.Row="1" Width="120" Height="120" HorizontalAlignment="Left" Margin="21,0,0,0">
+				<s:ScatterViewItem Orientation="18" Style="{DynamicResource StartInstanceSpecialShapeSVI}" Width="30" HorizontalContentAlignment="Center">
+					<Grid>
+						<Rectangle Width="30" Height="50" VerticalAlignment="Top" Fill="#00000000" />
+					<Image Width="13" Height="50" HorizontalAlignment="Center" Source="../Images/zeigergr2.png" VerticalAlignment="Top" Margin="0" Stretch="Fill" />
+					</Grid>
+				</s:ScatterViewItem>
+				<s:ScatterViewItem Style="{DynamicResource StartInstanceSpecialShapeSVI}" Orientation="62" Width="30" HorizontalContentAlignment="Center">
+					<Grid>
+						<Rectangle Width="30" Height="50" VerticalAlignment="Top" Fill="#00000000" />
+						<Image Width="15" Height="30" HorizontalAlignment="Center" Source="../Images/zeigerkl2.png" VerticalAlignment="Top" Margin="0,20,0,0" />
+					</Grid>
+				</s:ScatterViewItem>
+			</s:ScatterView>
+			 
+		</Grid>
+		
+		<Grid x:Name="LocationGrid" Grid.Row="4" Margin="0,5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<Path StrokeThickness="1" Grid.RowSpan="2" Stroke="Gray" Data="M30,15 L10,15 L10,70 L290,70 L290,15 L40,15"/>
+			
+			<TextBox x:Name="LocationGridText" Grid.Row="0" Text="Location Parameter" Style="{DynamicResource StartInstanceTextBox}" />
+			
+			<s:SurfaceButton Grid.Row="1" Width="110" Height="38" Background="Transparent" HorizontalAlignment="Left"
+					 Margin="21,-2,21,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					Padding="0" Click="AreaComboButton_Clicked">
+				<Grid Height="23" Width="110" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="10"/>
+					</Grid.ColumnDefinitions>
+					<Rectangle VerticalAlignment="Center" Height="23" Stroke="#FF707070" Grid.ColumnSpan="3" RadiusX="2" RadiusY="2" Fill="#FF707070"/>
+					<Rectangle VerticalAlignment="Center" Width="108" Height="21" Fill="#FF645A52" Grid.ColumnSpan="3" RadiusX="2" RadiusY="2" >
+						<Rectangle.Stroke>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFFAFAFA" Offset="0"/>
+								<GradientStop Color="#FFB7B2AF" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Stroke>
+					</Rectangle>
+					<TextBox x:Name="AreaTitleText" VerticalAlignment="Center" FontSize="12" Width="90" Text="Choose Area" Style="{DynamicResource TextBox_Simple}" Padding="5,1,1,1" HorizontalAlignment="Left" />
+					<Path x:Name="AreaBoxPath0" StrokeThickness="1" Grid.Column="1" Stroke="White" Data="M1,8 L5,12 L9,8" HorizontalAlignment="Right" Margin="0">
+						<Path.LayoutTransform>
+							<TransformGroup>
+								<ScaleTransform CenterX="0.5" CenterY="0.5"/>
+								<SkewTransform CenterX="0.5" CenterY="0.5"/>
+								<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Path.LayoutTransform>
+					</Path><Path x:Name="AreaBoxPath1" StrokeThickness="1" Grid.Column="1" Stroke="White" Data="M1,12 L5,16 L9,12" HorizontalAlignment="Right" Margin="0">
+						<Path.LayoutTransform>
+							<TransformGroup>
+								<ScaleTransform CenterX="0.5" CenterY="0.5"/>
+								<SkewTransform CenterX="0.5" CenterY="0.5"/>
+								<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Path.LayoutTransform>
+					</Path>
+				</Grid>
+			</s:SurfaceButton>	
+			
+			<s:SurfaceButton Grid.Row="1" Width="135" Height="38" Background="Transparent" HorizontalAlignment="Right"
+					Margin="0,-2,21,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					Padding="0" Click="LocationComboButton_Clicked">
+				<Grid Height="23" Width="135" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="10"/>
+					</Grid.ColumnDefinitions>
+					<Rectangle VerticalAlignment="Center" Height="23" Stroke="#FF707070" Grid.ColumnSpan="3" RadiusX="2" RadiusY="2" Fill="#FF707070"/>
+					<Rectangle VerticalAlignment="Center" Width="133" Height="21" Fill="#FF645A52" Grid.ColumnSpan="3" RadiusX="2" RadiusY="2" >
+						<Rectangle.Stroke>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFFAFAFA" Offset="0"/>
+								<GradientStop Color="#FFB7B2AF" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Stroke>
+					</Rectangle>
+					<TextBox x:Name="LocationTitleText" VerticalAlignment="Center" FontSize="12" Width="114" Text="Choose Location" Style="{DynamicResource TextBox_Simple}" Padding="5,1,1,1" HorizontalAlignment="Left" />
+					<Path x:Name="LocationBoxPath0" StrokeThickness="1" Grid.Column="1" Stroke="White" Data="M1,8 L5,12 L9,8" HorizontalAlignment="Right" Margin="0">
+						<Path.LayoutTransform>
+							<TransformGroup>
+								<ScaleTransform CenterX="0.5" CenterY="0.5"/>
+								<SkewTransform CenterX="0.5" CenterY="0.5"/>
+								<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Path.LayoutTransform>
+					</Path><Path x:Name="LocationBoxPath1" StrokeThickness="1" Grid.Column="1" Stroke="White" Data="M1,12 L5,16 L9,12" HorizontalAlignment="Right" Margin="0">
+						<Path.LayoutTransform>
+							<TransformGroup>
+								<ScaleTransform CenterX="0.5" CenterY="0.5"/>
+								<SkewTransform CenterX="0.5" CenterY="0.5"/>
+								<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Path.LayoutTransform>
+					</Path>
+				</Grid>
+			</s:SurfaceButton>		
+			<!--
+			<ComboBox Height="23.04" Width="100" Margin="21,11,21,0" Grid.Row="1" VerticalAlignment="Top"
+					HorizontalAlignment="Left" IsSynchronizedWithCurrentItem="True" SelectedIndex="0" Style="{DynamicResource StartInstanceComboBoxStyle}">
+				<TextBox Text="Choose Area" Style="{DynamicResource TextBox_Simple}"/>
+				<TextBox Text="1st Floor" Style="{DynamicResource TextBox_Simple}"/>
+				<TextBox Text="2nd Floor" Style="{DynamicResource TextBox_Simple}"/>
+				<TextBox Text="3rd Floor" Style="{DynamicResource TextBox_Simple}"/>
+			</ComboBox>
+			<ComboBox Height="23.04" Width="125" Margin="0,11,21,0" Grid.Row="1" VerticalAlignment="Top"
+					HorizontalAlignment="Right" IsSynchronizedWithCurrentItem="True" SelectedIndex="0" Style="{DynamicResource StartInstanceComboBoxStyle}">
+				<TextBox Text="Choose Location" Style="{DynamicResource TextBox_Simple}"/>
+				<TextBox Text="Living Room" Style="{DynamicResource TextBox_Simple}"/>
+				<TextBox Text="Kitchen" Style="{DynamicResource TextBox_Simple}"/>
+				<TextBox Text="Bathroom" Style="{DynamicResource TextBox_Simple}"/>
+			</ComboBox>		-->
+		</Grid>
+		
+		<Grid x:Name="ObjectGrid" Grid.Row="5" Margin="0,5">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<Path StrokeThickness="1" Grid.RowSpan="2" Stroke="Gray" Data="M30,15 L10,15 L10,70 L290,70 L290,15 L40,15"/>
+			
+			<TextBox x:Name="ObjectGridText" Grid.Row="0" Text="Object Parameter" Style="{DynamicResource StartInstanceTextBox}" />
+            
+			<s:SurfaceButton Grid.Row="1" Width="160" Height="38" Background="Transparent" HorizontalAlignment="Left"
+					Margin="17,-2,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					Padding="0" Click="ObjectComboButton_Clicked">
+				<Grid Height="23" Width="150" >
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="10"/>
+					</Grid.ColumnDefinitions>
+					<Rectangle VerticalAlignment="Center" Height="23" Stroke="#FF707070" Grid.ColumnSpan="3" RadiusX="2" RadiusY="2" Fill="#FF707070"/>
+					<Rectangle VerticalAlignment="Center" Width="148" Height="21" Fill="#FF645A52" Grid.ColumnSpan="3" RadiusX="2" RadiusY="2" >
+						<Rectangle.Stroke>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FFFAFAFA" Offset="0"/>
+								<GradientStop Color="#FFB7B2AF" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Stroke>
+					</Rectangle>
+					<TextBox x:Name="ObjectTitleText" VerticalAlignment="Center" FontSize="12" Width="130" Text="Choose Object" Style="{DynamicResource TextBox_Simple}" Padding="5,1,1,1" />
+					<Path x:Name="ObjectBoxPath0" StrokeThickness="1" Grid.Column="1" Stroke="White" Data="M1,8 L5,12 L9,8" HorizontalAlignment="Right" Margin="0">
+						<Path.LayoutTransform>
+							<TransformGroup>
+								<ScaleTransform CenterX="0.5" CenterY="0.5"/>
+								<SkewTransform CenterX="0.5" CenterY="0.5"/>
+								<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Path.LayoutTransform>
+					</Path><Path x:Name="ObjectBoxPath1" StrokeThickness="1" Grid.Column="1" Stroke="White" Data="M1,12 L5,16 L9,12" HorizontalAlignment="Right" Margin="0">
+						<Path.LayoutTransform>
+							<TransformGroup>
+								<ScaleTransform CenterX="0.5" CenterY="0.5"/>
+								<SkewTransform CenterX="0.5" CenterY="0.5"/>
+								<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Path.LayoutTransform>
+					</Path>
+				</Grid>
+			</s:SurfaceButton>		
+           
+		</Grid>
+		
+		<Grid x:Name="JustCreateGrid" Grid.Row="6" Margin="0,15">
+			<TextBox Text="Create instance, but do not yet start it. Instance gets waiting-state."
+				TextWrapping="Wrap" Margin="53,0,21,0" VerticalAlignment="Center" Style="{DynamicResource StartInstanceTextBox}" />
+			<s:SurfaceCheckBox x:Name="InstanceToWaitBox" IsChecked="False" Background="White" Margin="10,1" Padding="11,2,10,10"
+				Style="{DynamicResource CreateInstanceSurfaceCheckBoxStyle}" BorderThickness="1" >
+				<s:SurfaceCheckBox.BorderBrush>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFF9F9F9" Offset="0"/>
+						<GradientStop Color="#FFB8B3B0" Offset="1"/>
+					</LinearGradientBrush>
+				</s:SurfaceCheckBox.BorderBrush>
+			</s:SurfaceCheckBox>
+		</Grid>
+		
+		
+	<Grid x:Name="ApproveGrid" Grid.Row="7" Width="280" HorizontalAlignment="Center" Margin="0,0,0,19">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="140"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<TextBox x:Name="OkText" Grid.Row="0" Grid.Column="0" Text="Create and start Instance" FontSize="12" Margin="10,0,0,0"
+			Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Width="110" TextWrapping="Wrap" Padding="0" VerticalContentAlignment="Center"/>
+			<TextBox x:Name="CancelText" Grid.Row="0" Grid.Column="1" Text="Cancel, no Instance is created" FontSize="12" Margin="10,0,0,0"
+			Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Width="115"/>
+			<!--
+			<TextBox x:Name="Description" Grid.Row="2" Grid.ColumnSpan="3" Text="... this instance" FontSize="13" Margin="20,0,0,0" Height="26"
+			Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+			-->
+			<Rectangle x:Name="OkRectangle" Grid.Column="0" Style="{DynamicResource InstanceOption_Rectangle}" Width="100" />
+			<Image Grid.Column="0" Style="{DynamicResource InstanceDirection_Image}" HorizontalAlignment="Left" Margin="66,19,10,0" />
+			<s:SurfaceButton x:Name="OkButton" Grid.Column="0" Style="{DynamicResource InstanceOption_Button}" Template="{DynamicResource OptionsButtonControlTemplate}">
+                    <Image x:Name="OkImage" Source="../Images/ok_green.png" Style="{DynamicResource InstanceOption_Image}" />					
+			</s:SurfaceButton>	
+			
+			<Rectangle x:Name="CancelRectangle" Grid.Column="1" Style="{DynamicResource InstanceOption_Rectangle}" Width="100" />
+			<Image Grid.Column="1" Style="{DynamicResource InstanceDirection_Image}" HorizontalAlignment="Left" Margin="66,19,10,0" />
+            <s:SurfaceButton x:Name="CancelButton" Grid.Column="1" Style="{DynamicResource InstanceOption_Button}" Template="{DynamicResource OptionsButtonControlTemplate}">
+                <Image Source="../Images/cancel_red2.png" Style="{DynamicResource InstanceOption_Image}" Width="30" Height="30" />					
+			</s:SurfaceButton>	
+		</Grid>
+		
+			
+			<s:SurfaceListBox x:Name="ObjectComboListBox" Grid.Row="5" Grid.RowSpan="3" Width="147" HorizontalAlignment="Left" Margin="24,62,0,0"
+					VerticalAlignment="Top" Background="#EA000000" BorderThickness="1" SelectedIndex="-1"					
+					Visibility="Hidden" SelectionChanged="ObjectComboListBox_SelectionChanged">
+				<s:SurfaceListBox.BorderBrush>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFF9F8F8"/>
+						<GradientStop Color="#FFB9B4B1" Offset="1"/>
+					</LinearGradientBrush>
+				</s:SurfaceListBox.BorderBrush>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+						Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Object0Text" VerticalContentAlignment="Center" FontSize="12" Text="today's Mail" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+						Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Object1Text" VerticalContentAlignment="Center" FontSize="12" Text="Pot of Coffee" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+					Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Object2Text" VerticalContentAlignment="Center" FontSize="12" Text="Telephone" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+			</s:SurfaceListBox>
+			
+			
+			<s:SurfaceListBox x:Name="AreaComboListBox" Grid.Row="4" Grid.RowSpan="4" Width="108" HorizontalAlignment="Left" Margin="22,62,0,0"
+					VerticalAlignment="Top" Background="#EA000000" BorderThickness="1" SelectedIndex="-1"					
+					Visibility="Hidden" SelectionChanged="AreaComboListBox_SelectionChanged">
+				<s:SurfaceListBox.BorderBrush>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFF9F8F8"/>
+						<GradientStop Color="#FFB9B4B1" Offset="1"/>
+					</LinearGradientBrush>
+				</s:SurfaceListBox.BorderBrush>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+						Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Area0Text" VerticalContentAlignment="Center" FontSize="12" Text="1st Floor" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+						Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Area1Text" VerticalContentAlignment="Center" FontSize="12" Text="2nd Floor" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+					Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Area2Text" VerticalContentAlignment="Center" FontSize="12" Text="3rd Floor" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+			</s:SurfaceListBox>
+			
+			
+			
+			<s:SurfaceListBox x:Name="LocationComboListBox" Grid.Row="4" Grid.RowSpan="4" Width="133" HorizontalAlignment="Left" Margin="145,62,0,0"
+					VerticalAlignment="Top" Background="#EA000000" BorderThickness="1" SelectedIndex="-1"					
+					Visibility="Hidden" SelectionChanged="LocationComboListBox_SelectionChanged">
+				<s:SurfaceListBox.BorderBrush>
+					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+						<GradientStop Color="#FFF9F8F8"/>
+						<GradientStop Color="#FFB9B4B1" Offset="1"/>
+					</LinearGradientBrush>
+				</s:SurfaceListBox.BorderBrush>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+						Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Location0Text" VerticalContentAlignment="Center" FontSize="12" Text="Living Room" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+						Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Location1Text" VerticalContentAlignment="Center" FontSize="12" Text="Kitchen" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+				<s:SurfaceListBoxItem MinHeight="30" Height="30" VerticalContentAlignment="Center" Padding="0" BorderBrush="#FF707070"
+					Template="{DynamicResource ComboListBoxItem}" BorderThickness="0" Background="{x:Null}">
+					<TextBox x:Name="Location2Text" VerticalContentAlignment="Center" FontSize="12" Text="Bath Room" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" />
+				</s:SurfaceListBoxItem>
+			</s:SurfaceListBox>
+		
+	</Grid>
+</UserControl>

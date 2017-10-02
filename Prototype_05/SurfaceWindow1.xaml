@@ -1,0 +1,31 @@
+﻿<s:SurfaceWindow x:Class="Prototype_05.SurfaceWindow1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    xmlns:local="clr-namespace:Prototype_05" 
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"  
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="PresentationOptions d"
+    Title="Prototype_05"                 
+    Width="1920"
+    Height="1080" Loaded="WindowIsLoaded" WindowStyle="None" BorderThickness="0">
+
+    <Grid x:Name="MainGrid" Width="1920" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/bgsw5.png"/>
+        </Grid.Background>
+
+        <local:ModelOverviewArea x:Name="ModOvArea" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,370,0,0"/>
+        <local:ModelOverviewControl x:Name="ModelOverview" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,440,0,0"/>
+
+        <local:SystemOverviewArea x:Name="SystemStateOverviewArea" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,12,0,0" />
+        <local:SystemStateOverviewControl x:Name="SystemStateOverview" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,60,0,0" />
+
+        <local:RunningInstancesArea x:Name="RunningInstancesArea" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="825,12,0,0" />
+        <local:RunningInstancesControl x:Name="RunningInstancesControl" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="900,50,0,0" />
+		<!--
+		<Canvas Width="80" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="680,0,0,0" Background="#19FFFFFF" PreviewTouchDown="TagContactDown" PreviewTouchUp="TagContactUp"/>
+        -->
+    </Grid>
+</s:SurfaceWindow>

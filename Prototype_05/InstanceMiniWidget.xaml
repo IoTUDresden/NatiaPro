@@ -1,0 +1,109 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+	x:Class="Prototype_05.InstanceMiniWidget"
+	x:Name="UserControl"
+	Width="278" Height="75">
+	
+	
+	<s:SurfaceButton x:Name="RootSurfaceButton" Padding="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="0" Margin="0" Background="{x:Null}">
+
+	<Grid x:Name="MainGrid" Width="278" Height="70">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="52"/>
+			<RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="188"/>
+                <ColumnDefinition Width="45"/>
+                <ColumnDefinition x:Name="Column2" Width="45"/>
+            </Grid.ColumnDefinitions>
+
+			<s:SurfaceButton x:Name="ChangeStateButton" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Width="65" HorizontalAlignment="Right" Height="35"
+					Margin="0" Background="{x:Null}" BorderThickness="0" VerticalAlignment="Top" MinHeight="35"
+					HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="20"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					<Rectangle Grid.ColumnSpan="2"
+						Stroke="#FF272727" RadiusX="3" RadiusY="3" Fill="#FFD0C5A9" Height="35" Width="65" Margin="0" />
+					<Image Grid.Column="1" HorizontalAlignment="Center" Margin="0" Height="25"
+						VerticalAlignment="Center" Source="Images/controlinst.png" />
+				</Grid>
+			</s:SurfaceButton>
+			<s:SurfaceButton x:Name="ShowInfosButton" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Width="65" HorizontalAlignment="Right" Height="35"
+					Margin="0" Background="{x:Null}" BorderThickness="0" VerticalAlignment="Bottom" MinHeight="35"
+					HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="0">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="20"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+					<Rectangle Grid.ColumnSpan="2"
+						Stroke="#FF272727" RadiusX="3" RadiusY="3" Fill="#FFB6A985" Height="35" Width="65" Margin="0" />
+					<Image Grid.Column="1" HorizontalAlignment="Center" Margin="0" Height="22"
+						VerticalAlignment="Center" Source="Images/lupe_black.png" Width="26" RenderTransformOrigin="0.5,0.5" Stretch="Fill" >
+						<Image.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleY="1" ScaleX="-1"/>
+								<SkewTransform AngleY="0" AngleX="0"/>
+								<RotateTransform Angle="0"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Image.RenderTransform>
+					</Image>
+				</Grid>
+			</s:SurfaceButton>
+			<!--
+			<Rectangle Grid.Column="1" Grid.ColumnSpan="2" Width="45" HorizontalAlignment="Right" Margin="0,0,3,0" Stroke="#FF272727" RadiusX="3" RadiusY="3" Height="35" VerticalAlignment="Top" Fill="#FFD0C5A9" />
+			<s:SurfaceButton Grid.Column="1" Grid.ColumnSpan="2" Width="45" HorizontalAlignment="Right" Height="35" Margin="0" Background="{x:Null}" BorderThickness="0" Padding="0,0,3,0" VerticalAlignment="Top" MinHeight="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+				<Image  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0" Height="25" VerticalAlignment="Center" Source="Images/controlinst.png" />
+			</s:SurfaceButton>
+			<Rectangle Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Width="45" HorizontalAlignment="Right" Margin="0,0,3,0" Stroke="#FF272727" RadiusX="3" RadiusY="3" Height="35" VerticalAlignment="Bottom" Fill="#FFB6A985" />
+			<s:SurfaceButton Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Width="45" HorizontalAlignment="Right" Height="35" Margin="0" Background="{x:Null}" BorderThickness="0" Padding="0,0,3,0" VerticalAlignment="Bottom" MinHeight="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+				<Image  Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Source="Images/lupe_black.png" Height="22" Width="26" Stretch="Fill" RenderTransformOrigin="0.5,0.5" >
+					<Image.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleY="1" ScaleX="-1"/>
+							<SkewTransform AngleY="0" AngleX="0"/>
+							<RotateTransform Angle="0"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Image.RenderTransform>
+				</Image>
+			</s:SurfaceButton>
+			-->
+
+            <Rectangle x:Name="BackgroundRectangle" Grid.RowSpan="3" Grid.ColumnSpan="2" Stroke="#FF272727" RadiusY="3" RadiusX="3" >
+        	<Rectangle.Fill>
+        		<SolidColorBrush Color="{DynamicResource InstanceBackgroundColor}"/>
+        	</Rectangle.Fill>
+        </Rectangle>
+
+        <TextBox x:Name="TitleText" Grid.Row="0" Text="Cook delicious lunch for three persons" FontSize="14" MaxWidth="170"
+			TextWrapping="Wrap" Margin="5,5,5,0" Height="40" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+			HorizontalAlignment="Left" Style="{DynamicResource TextBox_SimpleBlack}"/>
+
+            <TextBox x:Name="IdText" Grid.Row="0" Grid.Column="1" Text="ID 77" FontSize="12" MaxWidth="40"
+			Height="40" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,5,5,0" 
+			HorizontalAlignment="Right" Style="{DynamicResource TextBox_SimpleBlack}"/>
+        
+            <ProgressBar x:Name="ProgressBar" Visibility="Visible" Grid.Row="1" Grid.ColumnSpan="2" Width="225" Height="14" Value="42"
+				HorizontalAlignment="Center" Style="{DynamicResource ProgressBarSurfaceStyle}" Margin="0,0,0,4" VerticalAlignment="Bottom">
+	        	<ProgressBar.Foreground>
+	        		<SolidColorBrush Color="{DynamicResource ExecutingBarColor}"/>
+	        	</ProgressBar.Foreground>
+	        	<!-- executing: #BF1F9B0A, waiting and paused: Bar: #BFD6DE48 Text: #FF8B8F3D, error: #BFC81D1D -->
+					 
+			</ProgressBar>
+			
+			<TextBox x:Name="ProgressWarningText" Visibility="Hidden" Grid.RowSpan="2" Grid.ColumnSpan="2" Text="Instance not yet started" FontSize="11" Style="{DynamicResource TextBox_SimpleBlack}" VerticalAlignment="Bottom" Margin="5,0,0,5" HorizontalAlignment="Left"/>
+	</Grid>
+</s:SurfaceButton>
+</UserControl>

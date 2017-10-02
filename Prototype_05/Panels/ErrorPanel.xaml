@@ -1,0 +1,181 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+	x:Class="Prototype_05.ErrorPanel"
+	x:Name="UserControl"
+	Width="345" Height="720">
+
+	<Grid x:Name="MainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="46"/>
+			<RowDefinition Height="280"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		
+		<Rectangle Grid.RowSpan="3" >
+			<Rectangle.Fill>
+				<SolidColorBrush Color="{DynamicResource HistoryMessageStripLight}"/>
+			</Rectangle.Fill>
+		</Rectangle>
+	
+	
+        <Grid x:Name="HeaderGrid" Grid.Row="0" Grid.Column="0">
+            <TextBox x:Name="ErrorHeader" Style="{DynamicResource Item_TextBox_Title}" Grid.ColumnSpan="2" Margin="1,0,0,0" Background="{x:Null}" Text="Device can't move"/>            
+        </Grid>
+		
+		<Grid x:Name="CauseGrid" Grid.Row="1" Grid.Column="0">
+			<Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+			</Grid.RowDefinitions>
+			
+            <TextBox Style="{DynamicResource Item_TextBox_Title}">
+            	<TextBox.Background>
+            		<SolidColorBrush Color="{DynamicResource HistoryMessageStripDark}"/>
+            	</TextBox.Background>
+                General Information
+            </TextBox>
+			
+	        <Grid x:Name="CauseInfoGrid" Grid.Row="1" Grid.Column="0" Margin="20,10,0,10">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.55*"/>
+					<ColumnDefinition Width="0.45*"/>
+				</Grid.ColumnDefinitions>
+	            <Grid.RowDefinitions>
+					<RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+					<RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+					<RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+					<RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+					<RowDefinition Height="2*"/>
+                    <RowDefinition Height="5*"/>
+	            </Grid.RowDefinitions>
+				
+	            <TextBox Grid.Row="0" Text="Cause of Error" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" />
+	            <TextBox x:Name="CauseText" Grid.Row="1" Text="Moving Problem" Style="{DynamicResource Item_TextBoxData_ValueLeft}" />
+	            <!--<TextBox Grid.Row="0" Text="ErrorCode" Style="{DynamicResource Item_TextBoxData_AttributeRight}" />
+				<TextBox x:Name="CodeText" Grid.Row="1" Text="ERR-764" Style="{DynamicResource Item_TextBoxData_ValueRight}" /> -->
+	            <TextBox Grid.Row="0" Text="Occured at" Style="{DynamicResource Item_TextBoxData_AttributeRight}" />
+				<TextBox x:Name="TimeText" Grid.Row="1" Grid.ColumnSpan="2" Text="today, 12:35" Style="{DynamicResource Item_TextBoxData_ValueRight}" />
+	            <TextBox Grid.Row="2" Text="Affected Instance" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" />
+	            <TextBox x:Name="InstanceText" Grid.Row="3" Grid.ColumnSpan="2" Text="Process Instance Name" TextDecorations="Underline" Style="{DynamicResource Item_TextBoxData_ValueLeft}" />
+	            <TextBox Grid.Row="2" Text="Instance-ID" Style="{DynamicResource Item_TextBoxData_AttributeRight}" />
+	            <TextBox x:Name="IdText" Grid.Row="3" Grid.ColumnSpan="2" Text="13-6" Style="{DynamicResource Item_TextBoxData_ValueRight}" />
+	            <TextBox Grid.Row="4" Text="Ocurred during Step" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" />
+	            <TextBox x:Name="StepText" Grid.Row="5" Grid.ColumnSpan="2" Text="Long Process Step Name" TextDecorations="Underline" Style="{DynamicResource Item_TextBoxData_ValueLeft}" />
+	            <TextBox Grid.Row="6" Text="Affected Device" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" />
+				<TextBox x:Name="DeviceText" Grid.Row="7" Grid.ColumnSpan="2" Text="YouBot-Device" Style="{DynamicResource Item_TextBoxData_ValueLeft}" />
+	            <TextBox Grid.Row="8" Text="Description" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" />
+				<TextBox x:Name="DescriptionText" Grid.Row="9" Grid.ColumnSpan="2" Text="Device is stuck because of an obstacle." TextWrapping="Wrap" Style="{DynamicResource Item_TextBoxData_ValueLeft}" Margin="0,0,11,0" />
+			</Grid>
+		</Grid>
+
+        <Grid x:Name="SolvingGrid" Grid.Row="2" PreviewTouchDown="OptionTouchDown" PreviewTouchMove="OptionTouchMove" PreviewTouchUp="OptionTouchUp">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="30"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="40"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+            <TextBox Style="{DynamicResource Item_TextBox_Title}">
+            	<TextBox.Background>
+            		<SolidColorBrush Color="{DynamicResource HistoryMessageStripDark}"/>
+            	</TextBox.Background>
+                Troubleshooting
+            </TextBox>
+				<Rectangle x:Name="TouchSafetyRectangle" Grid.Row="3" Fill="Transparent" /> <!-- PreviewTouchMove="OptionTouchMoveRect" PreviewTouchUp="OptionTouchUpRect" -->
+			
+				<TextBox x:Name="ConfirmText" Grid.Row="2" Text="Confirm selected measure:" Style="{DynamicResource ErrorControlOption}" Height="Auto" Margin="19,0,0,0" />		
+				<Rectangle x:Name="ConfirmRectangle" Grid.Row="3" Style="{DynamicResource InstanceOption_Rectangle}" Margin="31,16,0,0" Width="110" />
+				<Image Grid.Row="3" Style="{DynamicResource InstanceDirection_Image}" Margin="-129,19,10,0" />
+	            <s:SurfaceButton x:Name="ConfirmButton" Grid.Row="3" Style="{DynamicResource InstanceOption_Button}" Template="{DynamicResource OptionsButtonControlTemplate}"
+	                Width="38" Height="38" Margin="21,6,0,0">
+	                <Image x:Name="ConfirmMeasureImage" Source="../Images/wok_black.png" Style="{DynamicResource InstanceOption_Image}" />					
+				</s:SurfaceButton>
+				<TextBox x:Name="ChosenMeasureText" Grid.Row="3" Text="Do nothing (Error remains)" Style="{DynamicResource ErrorControlOption}" Height="Auto" Margin="21,-17,30,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" />		
+		
+			<Grid x:Name="SolvingInfoGrid" Height="Auto" Grid.Row="1" Margin="10,10,0,5">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="35"/>
+					<RowDefinition Height="205"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="40"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				
+						<TextBox x:Name="SelectText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="11" Text="Select Measure" Style="{DynamicResource ErrorControlOption}" Margin="11,7,0,0" VerticalAlignment="Top" Height="Auto" />
+				
+				<Grid x:Name="SolveiGrid" Grid.Row="1" Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>					
+				
+					<Grid x:Name="Solve1Grid" Grid.Row="0" Grid.Column="1" Margin="0,0,0,5">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="30"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+						<Image Grid.Row="0" Source="../Images/wnothing.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="DoNothingText" Grid.Row="0" Text="Do nothing (Error remains)" Style="{DynamicResource ErrorControlOption}" />
+						<Image Grid.Row="1" Source="../Images/wok.png" Style="{DynamicResource ErrorMeasure_Image}" />	
+						<TextBox x:Name="SolvedText" Grid.Row="1" Text="Mark Problem as manually solved" Style="{DynamicResource ErrorControlOption}" />
+					</Grid>				
+					<Grid x:Name="Solve2Grid" Grid.Row="1" Grid.Column="1" Margin="0,5,0,5">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="30"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+						<Image Grid.Row="0" Source="../Images/wschraubschl.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="TechnicianText" Grid.Row="0" Text="Contact technician" TextDecorations="Underline" Style="{DynamicResource ErrorControlOption}" />	
+						<Image Grid.Row="1" Source="../Images/wgetriebe.png" Style="{DynamicResource ErrorMeasure_Image}" Width="23" Height="23" />					
+						<TextBox x:Name="Correct1Text" Grid.Row="1" Text="Clear Obstacle" TextDecorations="Underline" Style="{DynamicResource ErrorControlOption}" />
+						<Image Grid.Row="2" Source="../Images/wgetriebe.png" Style="{DynamicResource ErrorMeasure_Image}" Width="23" Height="23" />		
+						<TextBox x:Name="Correct2Text" Grid.Row="2" Text="Transmit task to another device" TextDecorations="Underline" Style="{DynamicResource ErrorControlOption}" />	
+					</Grid>	
+					<Grid x:Name="Solve3Grid" Grid.Row="2" Grid.Column="1" Margin="0,5,0,0">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="30"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+						<Image Grid.Row="0" Source="../Images/stop_white.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="StopText" Grid.Row="0" Text="Stop Process" Style="{DynamicResource ErrorControlOption}" />
+						<Image Grid.Row="1" Source="../Images/wkill.png" Style="{DynamicResource ErrorMeasure_Image}" />	
+						<TextBox x:Name="KillText" Grid.Row="1" Text="Kill Process" Style="{DynamicResource ErrorControlOption}" />		
+					</Grid>	
+				
+				</Grid>
+				
+                <s:SurfaceSlider Grid.Column="0" Grid.ColumnSpan="2" Maximum="49" Interval="1" IsSnapToTickEnabled="True"
+					Orientation="Vertical" Style="{DynamicResource ErrorMeasureSurfaceSliderStyle}" Value="49" Ticks="0,7.1,17.1,24.35,31.6,41.5,49" Margin="0,-15.04,0,-11"
+					HorizontalAlignment="Left" Grid.Row="1" ValueChanged="OptionValueChanged"/>
+				
+				
+			</Grid>		
+		</Grid>	
+		
+	</Grid>
+</UserControl>

@@ -1,0 +1,2869 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Custom="http://schemas.microsoft.com/surface/2008"
+    xmlns:Microsoft_Surface_Presentation_Generic="clr-namespace:Microsoft.Surface.Presentation.Generic;assembly=Microsoft.Surface.Presentation.Generic"
+    xmlns:local="clr-namespace:Prototype_05"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d">
+
+	<!-- View-Slider in ModelItem (ModelPanel) with light green inlay -->
+    <Style x:Key="SliderStyle" TargetType="{x:Type Custom:SurfaceSlider}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Top" Height="4" Grid.Row="0"/>
+                            <TickBar x:Name="BottomTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Bottom" Height="4" Grid.Row="0"/>
+                            <Border x:Name="TrackBackground" 
+								 Background="#FFE7EAEA"
+								 BorderBrush="#FFAEB1AF"                                        
+								 BorderThickness="0.2" CornerRadius="1"
+								 Margin="5,0" VerticalAlignment="Center" Height="1.0" Grid.Row="1" >
+                                <Canvas Margin="-6,-1">
+                                    <Rectangle Visibility="Hidden" x:Name="PART_SelectionRange" Height="1.0"
+									 Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+									 Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"
+									 StrokeThickness="0.5"/>
+                                </Canvas>
+                            </Border>
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton Command="{x:Static Slider.DecreaseLarge}" OverridesDefaultStyle="True" IsTabStop="False"
+                                                  Focusable="False">
+                                        <Custom:SurfaceRepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceRepeatButton.Template>
+                                    </Custom:SurfaceRepeatButton>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton Command="{x:Static Slider.IncreaseLarge}" OverridesDefaultStyle="True" IsTabStop="False"
+                                                  Focusable="False">
+                                        <Custom:SurfaceRepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceRepeatButton.Template>
+                                    </Custom:SurfaceRepeatButton>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Custom:SurfaceThumb x:Name="Thumb" Background="Black" OverridesDefaultStyle="True">
+                                        <!-- Style="{StaticResource CustomThumbForSlider}" -->
+                                        <Custom:SurfaceThumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                                                <Ellipse Fill="#FF415244" Stroke="#FFFFFFFF" Height="15" Width="30"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceThumb.Template>
+                                    </Custom:SurfaceThumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	
+	<!-- View-Slider in ModelItem (ModelPanel) with light green inlay -->
+    <Style x:Key="VerticalSliderStyle" TargetType="{x:Type Custom:SurfaceSlider}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Top" Height="4" Grid.Row="0"/>
+                            <TickBar x:Name="BottomTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Bottom" Height="4" Grid.Row="0"/>
+                            <Border x:Name="TrackBackground" 
+								 Background="#FFE7EAEA"
+								 BorderBrush="#FFAEB1AF"                                        
+								 BorderThickness="0.2" CornerRadius="1"
+								 Margin="5,0" VerticalAlignment="Center" Height="1.0" Grid.Row="1" >
+                                <Canvas Margin="-6,-1">
+                                    <Rectangle Visibility="Hidden" x:Name="PART_SelectionRange" Height="1.0"
+									 Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+									 Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"
+									 StrokeThickness="0.5"/>
+                                </Canvas>
+                            </Border>
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton Command="{x:Static Slider.DecreaseLarge}" OverridesDefaultStyle="True" IsTabStop="False"
+                                                  Focusable="False">
+                                        <Custom:SurfaceRepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceRepeatButton.Template>
+                                    </Custom:SurfaceRepeatButton>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton Command="{x:Static Slider.IncreaseLarge}" OverridesDefaultStyle="True" IsTabStop="False"
+                                                  Focusable="False">
+                                        <Custom:SurfaceRepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceRepeatButton.Template>
+                                    </Custom:SurfaceRepeatButton>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Custom:SurfaceThumb x:Name="Thumb" Background="Black" OverridesDefaultStyle="True">
+                                        <!-- Style="{StaticResource CustomThumbForSlider}" -->
+                                        <Custom:SurfaceThumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                                                <Ellipse Fill="#FF415244" Stroke="#FFFFFFFF" Height="15" Width="30"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceThumb.Template>
+                                    </Custom:SurfaceThumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+	<!-- in use for white-thumbed Slider in RunningInstances for switching between Detail and Mini-View-->
+    <Style x:Key="SliderStyleWhiteThumb" TargetType="{x:Type Custom:SurfaceSlider}">
+        <Setter Property="HorizontalAlignment"
+				Value="Left" />
+        <Setter Property="Margin"
+				Value="260,0,0,0" />
+        <Setter Property="Grid.Column"
+				Value="2" />
+        <Setter Property="Maximum"
+				Value="1" />
+        <Setter Property="Width"
+				Value="50" />
+		<Setter Property="IsMoveToPointEnabled"
+				Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TickBar x:Name="TopTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Top" Height="4" Grid.Row="0"/>
+                            <TickBar x:Name="BottomTick" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" Placement="Bottom" Height="4" Grid.Row="0"/>
+                            <Border x:Name="TrackBackground" 
+								 Background="#FFE7EAEA"
+								 BorderBrush="#FFAEB1AF"                                        
+								 BorderThickness="0.2" CornerRadius="1"
+								 Margin="5,0" VerticalAlignment="Center" Height="1.0" Grid.Row="1" >
+                                <Canvas Margin="-6,-1">
+                                    <Rectangle Visibility="Hidden" x:Name="PART_SelectionRange" Height="1.0"
+									 Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+									 Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}"
+									 StrokeThickness="0.5"/>
+                                </Canvas>
+                            </Border>
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton Command="{x:Static Slider.DecreaseLarge}" OverridesDefaultStyle="True" IsTabStop="False"
+                                                  Focusable="False">
+                                        <Custom:SurfaceRepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceRepeatButton.Template>
+                                    </Custom:SurfaceRepeatButton>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton Command="{x:Static Slider.IncreaseLarge}" OverridesDefaultStyle="True" IsTabStop="False"
+                                                  Focusable="False">
+                                        <Custom:SurfaceRepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                                                <Rectangle Fill="Transparent"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceRepeatButton.Template>
+                                    </Custom:SurfaceRepeatButton>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Custom:SurfaceThumb x:Name="Thumb" Background="Black" OverridesDefaultStyle="True">
+                                        <!-- Style="{StaticResource CustomThumbForSlider}" -->
+                                        <Custom:SurfaceThumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                                                <Rectangle Fill="White" Stroke="#FFFFFFFF" Height="20" Width="10"/>
+                                            </ControlTemplate>
+                                        </Custom:SurfaceThumb.Template>
+                                    </Custom:SurfaceThumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!-- public section -->
+    <SolidColorBrush x:Key="ControlHitAreaBrush"    
+		Color="#00FFFFFF"/>
+    <!-- Minimum HitArea Base Style for 55 dpi-->
+    <Style x:Key="SurfaceHitAreaBaseStyle"
+		TargetType="{x:Type Control}">
+        <Setter Property="SnapsToDevicePixels"
+			Value="False"/>
+        <Setter Property="Background"
+			Value="{StaticResource ControlHitAreaBrush}"/>
+        <Setter Property="IsTabStop"
+			Value="False"/>
+        <Setter Property="Focusable"
+			Value="False"/>
+        <Setter Property="FocusVisualStyle"
+			Value="{x:Null}"/>
+        <Setter Property="MinWidth"
+			Value="40" />
+        <Setter Property="MinHeight"
+			Value="40" />
+    </Style>
+    <Style x:Key="SurfaceVertScrollBarRepeatButton"
+		TargetType="{x:Type Custom:SurfaceRepeatButton}" >
+        <Setter Property="Interval"
+			Value="150" />
+        <Setter Property="BorderBrush"
+			Value="{x:Null}" />
+        <Setter Property="Background"
+			Value="{StaticResource ControlHitAreaBrush}" />
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                    <Grid Width="40" Background="{TemplateBinding Background}">
+                        <Rectangle  HorizontalAlignment="Center" 
+							x:Name="Line"
+							MinWidth="2"
+							Fill="{DynamicResource {x:Static Custom:SurfaceColors.TrackBackgroundBrushKey}}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"   
+								TargetName="Line"                             
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- ScrollBar Vert Thumb -->
+    <Style x:Key="SurfaceScrollBarThumbStyle"
+		TargetType="{x:Type Custom:SurfaceThumb}"
+		BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Width" 
+								To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin"
+								To="-1,0,-1,0" />
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb" 
+								Storyboard.TargetProperty="Width"
+								To="14"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin" 
+								To="0,0,0,0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid   x:Name="Grid"
+						Background="{TemplateBinding Background}"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Rectangle  x:Name="Thumb"
+							Height="Auto"
+							Width="14" 
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Fill="{DynamicResource {x:Static Custom:SurfaceColors.ThumbEnabledBrushKey}}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger  Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"
+								TargetName="Thumb"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- ScrollBar Vert Thumb White -->
+    <Style x:Key="SurfaceScrollBarThumbStyleWhite"
+		TargetType="{x:Type Custom:SurfaceThumb}"
+		BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Width" 
+								To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin"
+								To="-1,0,-1,0" />
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb" 
+								Storyboard.TargetProperty="Width"
+								To="14"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin" 
+								To="0,0,0,0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid   x:Name="Grid"
+						Background="{TemplateBinding Background}"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Rectangle  x:Name="Thumb"
+							Height="Auto"
+							Width="14" 
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Fill="White" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger  Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"
+								TargetName="Thumb"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- ScrollBar RepeatButton -->
+    <Style x:Key="SurfaceHorzScrollBarRepeatButton"
+		TargetType="{x:Type Custom:SurfaceRepeatButton}" >
+        <Setter Property="Interval"
+			Value="150" />
+        <Setter Property="BorderBrush"
+			Value="{x:Null}" />
+        <Setter Property="Background"
+			Value="{StaticResource ControlHitAreaBrush}" />
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                    <Grid Height="40" Background="{TemplateBinding Background}">
+                        <Rectangle VerticalAlignment="Center"
+							x:Name="Line"
+							MinHeight="2"
+							Fill="White"/>
+                        <!-- {DynamicResource {x:Static Custom:SurfaceColors.TrackBackgroundBrushKey}} -->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"   
+								TargetName="Line"                             
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+	<!-- Thumb für ScrollViewer in ModelItem (ModelPanel) (protocol) with light green inlay -->
+    <Style x:Key="SurfaceScrollBarHorizThumbStyle"
+		TargetType="{x:Type Custom:SurfaceThumb}"
+		BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <!-- Vertical orientation -->
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Height" 
+								To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin"
+								To="0,-1,0,-1" />
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb" 
+								Storyboard.TargetProperty="Height"
+								To="14"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin" 
+								To="0,0,0,0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						Background="{TemplateBinding Background}"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" >
+                        <Rectangle  x:Name="Thumb"
+							Width="Auto"
+							Height="14"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"  
+							Fill="#FF415244"
+							Stroke="White"
+							StrokeThickness="1" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"
+								TargetName="Thumb"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	
+	<!-- Thumb für ScrollViewer in InstancePanel) (protocol) with light brown inlay -->
+    <Style x:Key="SurfaceScrollBarHorizThumbStyleBrown"
+		TargetType="{x:Type Custom:SurfaceThumb}"
+		BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <!-- Vertical orientation -->
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Height" 
+								To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin"
+								To="0,-1,0,-1" />
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb" 
+								Storyboard.TargetProperty="Height"
+								To="14"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin" 
+								To="0,0,0,0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						Background="{TemplateBinding Background}"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" >
+                        <Rectangle  x:Name="Thumb"
+							Width="Auto"
+							Height="14"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"  
+							Fill="#FF645A52"
+							Stroke="White"
+							StrokeThickness="1" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"
+								TargetName="Thumb"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollBar e.g. for scrollviewer with green thumb -->
+    <Style x:Key="SurfaceScrollBarStyle"
+		TargetType="{x:Type Custom:SurfaceScrollBar}"
+         >
+        <Style.Resources>
+            <System:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">38</System:Double>
+            <System:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">38</System:Double>
+        </Style.Resources>
+        <Setter Property="Stylus.IsPressAndHoldEnabled"
+			Value="False"/>
+        <Setter Property="Stylus.IsFlicksEnabled"
+			Value="False"/>
+        <Setter Property="Width"
+			Value="38"/>
+        <Setter Property="Height"
+			Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- vertical scroll bar -->
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollBar}">
+                    <Grid x:Name="GridRoot" Background="{TemplateBinding Background}">
+                        <Border x:Name="Track"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Stretch">
+                            <Track x:Name="PART_Track"
+								IsDirectionReversed="True">
+                                <Track.IncreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton x:Name="IncreaseRepeat"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center"
+										Style="{StaticResource SurfaceVertScrollBarRepeatButton}"
+										Command="ScrollBar.PageDownCommand"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton x:Name="DecreaseRepeat"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center"
+										Style="{StaticResource SurfaceVertScrollBarRepeatButton}"
+										Command="ScrollBar.PageUpCommand"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Custom:SurfaceThumb  Style="{StaticResource SurfaceScrollBarThumbStyleWhite}"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center" 
+										x:Name="Thumb"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Animates Scrollbar from small to large state -->
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_Track"
+								Value="False"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.BasedOn>
+            <StaticResource ResourceKey="SurfaceHitAreaBaseStyle"/>
+        </Style.BasedOn>
+
+        <Style.Triggers>
+            <!-- Horizontal orientation -->
+            <Trigger Property="Orientation"   Value="Horizontal">
+                <Setter Property="Width"
+					Value="Auto"/>
+                <Setter Property="Height"
+					Value="38"/>
+                <!-- change the whole template -->
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollBar}">
+                            <Grid x:Name="GridRoot" Background="{TemplateBinding Background}">
+                                <Border x:Name="Track"
+									VerticalAlignment="Stretch"
+									HorizontalAlignment="Stretch">
+                                    <Track x:Name="PART_Track">
+                                        <Track.DecreaseRepeatButton>
+                                            <Custom:SurfaceRepeatButton x:Name="DecreaseRepeat"
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center"
+												Style="{StaticResource SurfaceHorzScrollBarRepeatButton}"													
+												Command="ScrollBar.PageLeftCommand" />
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.IncreaseRepeatButton>
+                                            <Custom:SurfaceRepeatButton x:Name="IncreaseRepeat" 
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center"
+												Style="{StaticResource SurfaceHorzScrollBarRepeatButton}"
+												Command="ScrollBar.PageRightCommand"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Custom:SurfaceThumb  Style="{StaticResource SurfaceScrollBarHorizThumbStyle}"	
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center" 
+												x:Name="Thumb"/>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <!-- Animates Scrollbar from small to large state -->
+                                <Trigger Property="IsEnabled"
+									Value="False">
+                                    <Setter Property="Opacity"
+										TargetName="IncreaseRepeat"
+										Value="0.33"/>
+                                    <Setter Property="Opacity"
+										TargetName="DecreaseRepeat"
+										Value="0.33"/>
+                                    <Setter Property="IsEnabled"
+										TargetName="PART_Track"
+										Value="False"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ScrollBar for scrollviewer with brown thumb -->
+    <Style x:Key="SurfaceScrollBarStyleBrown"
+		TargetType="{x:Type Custom:SurfaceScrollBar}"
+         >
+        <Style.Resources>
+            <System:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">38</System:Double>
+            <System:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">38</System:Double>
+        </Style.Resources>
+        <Setter Property="Stylus.IsPressAndHoldEnabled"
+			Value="False"/>
+        <Setter Property="Stylus.IsFlicksEnabled"
+			Value="False"/>
+        <Setter Property="Width"
+			Value="38"/>
+        <Setter Property="Height"
+			Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- vertical scroll bar -->
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollBar}">
+                    <Grid x:Name="GridRoot" Background="{TemplateBinding Background}">
+                        <Border x:Name="Track"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Stretch">
+                            <Track x:Name="PART_Track"
+								IsDirectionReversed="True">
+                                <Track.IncreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton x:Name="IncreaseRepeat"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center"
+										Style="{StaticResource SurfaceVertScrollBarRepeatButton}"
+										Command="ScrollBar.PageDownCommand"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton x:Name="DecreaseRepeat"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center"
+										Style="{StaticResource SurfaceVertScrollBarRepeatButton}"
+										Command="ScrollBar.PageUpCommand"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Custom:SurfaceThumb  Style="{StaticResource SurfaceScrollBarThumbStyleWhite}"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center" 
+										x:Name="Thumb"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Animates Scrollbar from small to large state -->
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_Track"
+								Value="False"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.BasedOn>
+            <StaticResource ResourceKey="SurfaceHitAreaBaseStyle"/>
+        </Style.BasedOn>
+
+        <Style.Triggers>
+            <!-- Horizontal orientation -->
+            <Trigger Property="Orientation"   Value="Horizontal">
+                <Setter Property="Width"
+					Value="Auto"/>
+                <Setter Property="Height"
+					Value="38"/>
+                <!-- change the whole template -->
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollBar}">
+                            <Grid x:Name="GridRoot" Background="{TemplateBinding Background}">
+                                <Border x:Name="Track"
+									VerticalAlignment="Stretch"
+									HorizontalAlignment="Stretch">
+                                    <Track x:Name="PART_Track">
+                                        <Track.DecreaseRepeatButton>
+                                            <Custom:SurfaceRepeatButton x:Name="DecreaseRepeat"
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center"
+												Style="{StaticResource SurfaceHorzScrollBarRepeatButton}"													
+												Command="ScrollBar.PageLeftCommand" />
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.IncreaseRepeatButton>
+                                            <Custom:SurfaceRepeatButton x:Name="IncreaseRepeat" 
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center"
+												Style="{StaticResource SurfaceHorzScrollBarRepeatButton}"
+												Command="ScrollBar.PageRightCommand"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Custom:SurfaceThumb  Style="{StaticResource SurfaceScrollBarHorizThumbStyleBrown}"	
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center" 
+												x:Name="Thumb"/>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <!-- Animates Scrollbar from small to large state -->
+                                <Trigger Property="IsEnabled"
+									Value="False">
+                                    <Setter Property="Opacity"
+										TargetName="IncreaseRepeat"
+										Value="0.33"/>
+                                    <Setter Property="Opacity"
+										TargetName="DecreaseRepeat"
+										Value="0.33"/>
+                                    <Setter Property="IsEnabled"
+										TargetName="PART_Track"
+										Value="False"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="SurfaceScrollBarHorizThumbStyleInstancesWhite"
+		TargetType="{x:Type Custom:SurfaceThumb}"
+		BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <!-- Vertical orientation -->
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Height" 
+								To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.05"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin"
+								To="0,-1,0,-1" />
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb" 
+								Storyboard.TargetProperty="Height"
+								To="14"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin" 
+								To="0,0,0,0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						Background="{TemplateBinding Background}"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" >
+                        <Rectangle  x:Name="Thumb"
+							Width="Auto"
+							Height="14"
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"  
+							Fill="White"
+							Stroke="White"
+							StrokeThickness="1" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"
+								TargetName="Thumb"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- ScrollBar -->
+    <Style x:Key="SurfaceScrollBarStyleInstancesWhite"
+		TargetType="{x:Type Custom:SurfaceScrollBar}"
+         >
+        <Style.Resources>
+            <System:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">38</System:Double>
+            <System:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">38</System:Double>
+        </Style.Resources>
+        <Setter Property="Stylus.IsPressAndHoldEnabled"
+			Value="False"/>
+        <Setter Property="Stylus.IsFlicksEnabled"
+			Value="False"/>
+        <Setter Property="Width"
+			Value="38"/>
+        <Setter Property="Height"
+			Value="Auto"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- vertical scroll bar -->
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollBar}">
+                    <Grid x:Name="GridRoot" Background="{TemplateBinding Background}">
+                        <Border x:Name="Track"
+							VerticalAlignment="Stretch"
+							HorizontalAlignment="Stretch">
+                            <Track x:Name="PART_Track"
+								IsDirectionReversed="True">
+                                <Track.IncreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton x:Name="IncreaseRepeat"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center"
+										Style="{StaticResource SurfaceVertScrollBarRepeatButton}"
+										Command="ScrollBar.PageDownCommand"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <Custom:SurfaceRepeatButton x:Name="DecreaseRepeat"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center"
+										Style="{StaticResource SurfaceVertScrollBarRepeatButton}"
+										Command="ScrollBar.PageUpCommand"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Custom:SurfaceThumb  Style="{StaticResource SurfaceScrollBarThumbStyleWhite}"
+										Background="{TemplateBinding Background}"
+										HorizontalAlignment="Center" 
+										x:Name="Thumb"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Animates Scrollbar from small to large state -->
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_Track"
+								Value="False"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.BasedOn>
+            <StaticResource ResourceKey="SurfaceHitAreaBaseStyle"/>
+        </Style.BasedOn>
+
+        <Style.Triggers>
+            <!-- Horizontal orientation -->
+            <Trigger Property="Orientation"   Value="Horizontal">
+                <Setter Property="Width"
+					Value="Auto"/>
+                <Setter Property="Height"
+					Value="38"/>
+                <!-- change the whole template -->
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollBar}">
+                            <Grid x:Name="GridRoot" Background="{TemplateBinding Background}">
+                                <Border x:Name="Track"
+									VerticalAlignment="Stretch"
+									HorizontalAlignment="Stretch">
+                                    <Track x:Name="PART_Track">
+                                        <Track.DecreaseRepeatButton>
+                                            <Custom:SurfaceRepeatButton x:Name="DecreaseRepeat"
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center"
+												Style="{StaticResource SurfaceHorzScrollBarRepeatButton}"													
+												Command="ScrollBar.PageLeftCommand" />
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.IncreaseRepeatButton>
+                                            <Custom:SurfaceRepeatButton x:Name="IncreaseRepeat" 
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center"
+												Style="{StaticResource SurfaceHorzScrollBarRepeatButton}"
+												Command="ScrollBar.PageRightCommand"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Custom:SurfaceThumb  Style="{StaticResource SurfaceScrollBarHorizThumbStyleInstancesWhite}"	
+												Background="{TemplateBinding Background}"
+												VerticalAlignment="Center" 
+												x:Name="Thumb"/>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <!-- Animates Scrollbar from small to large state -->
+                                <Trigger Property="IsEnabled"
+									Value="False">
+                                    <Setter Property="Opacity"
+										TargetName="IncreaseRepeat"
+										Value="0.33"/>
+                                    <Setter Property="Opacity"
+										TargetName="DecreaseRepeat"
+										Value="0.33"/>
+                                    <Setter Property="IsEnabled"
+										TargetName="PART_Track"
+										Value="False"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- ScrollViewerBase -->
+    <Style x:Key="SurfaceScrollViewerStyleInstances"
+		TargetType="{x:Type Custom:SurfaceScrollViewer}">
+        <Setter Property="Elasticity"
+			Value="0.4,0.4" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollViewer}">
+                    <Grid Background="{x:Null}"
+						HorizontalAlignment="Stretch" 
+						VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name="PART_ElasticBorder"
+							Background="{TemplateBinding Background}">
+                            <ScrollContentPresenter 
+								Margin="-1,-1,-1,-1"
+								Grid.Column="0"
+								Grid.ColumnSpan="1"
+								Grid.Row="0"
+								Grid.RowSpan="1"
+								Content="{TemplateBinding Content}"
+								ContentTemplate="{TemplateBinding ContentTemplate}"
+								CanContentScroll="{TemplateBinding CanContentScroll}"
+								CanHorizontallyScroll="False"
+								CanVerticallyScroll="False"
+								ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        </Border>
+
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+							x:Name="PART_HorizontalScrollBar"
+							Margin="0,0,10,0"
+							Grid.Column="0"
+							Grid.Row="1"
+							Orientation="Horizontal"
+							Maximum="{TemplateBinding ScrollableWidth}"
+							Minimum="0"
+							Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="HorizontalScrollBar"
+							Height="Auto"
+							Style="{StaticResource SurfaceScrollBarStyleInstancesWhite}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportWidth}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"/>
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+							x:Name="PART_VerticalScrollBar"                           
+							Grid.Column="1"
+							Grid.Row="0"
+							Orientation="Vertical"
+							Maximum="{TemplateBinding ScrollableHeight}"
+							Minimum="0"
+							Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="VerticalScrollBar"
+							Width="Auto"
+							Style="{StaticResource SurfaceScrollBarStyleInstancesWhite}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportHeight}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"
+							IsEnabled="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_HorizontalScrollBar"
+								Value="False" />
+                            <Setter Property="IsEnabled"
+								TargetName="PART_VerticalScrollBar"
+								Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style x:Key="SurfaceThumbStyleWhite"
+		TargetType="{x:Type Custom:SurfaceThumb}"
+		BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Custom:TouchVisualizer.Adapter">
+            <Setter.Value>
+                <Custom:RectangleTouchVisualizerAdapter RadiusX="15"
+					RadiusY="15"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MinHeight" Value="6"/>
+        <Setter Property="MinWidth" Value="6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <!-- Horizontal orientation -->
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Width" 
+								To="38"/>
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Height" 
+								To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin"
+								To="-16,7,-16,0" />
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.15"
+								Storyboard.TargetName="Thumb" 
+								Storyboard.TargetProperty="Width"
+								To="6"/>
+                            <DoubleAnimation Duration="0:0:0.1"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Height" 
+								To="14"/>
+                            <ThicknessAnimation Duration="0:0:0.15"
+								Storyboard.TargetName="Thumb"
+								Storyboard.TargetProperty="Margin" 
+								To="0,8,0,0" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid" >
+                        <Rectangle x:Name="HitArea"                           
+							HorizontalAlignment="Stretch"
+							VerticalAlignment="Stretch"
+							Width="38" 
+							Height="38" 
+							Margin="-18,0,-18,0"						   
+							Fill="{StaticResource ControlHitAreaBrush}" />
+                        <Rectangle x:Name="Thumb"
+							Margin="0,8,0,0"
+							Width="6"
+							Height="14"
+							HorizontalAlignment="Center"
+							VerticalAlignment="Top"
+							Fill="White"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter TargetName="Thumb"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"
+								Property="Fill"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollViewerBase -->
+    <Style x:Key="SurfaceScrollViewerStyleWhiteBorderGreenInlay"
+		TargetType="{x:Type Custom:SurfaceScrollViewer}">
+        <Setter Property="Elasticity"
+			Value="0.4,0.4" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollViewer}">
+                    <Grid   Background="{TemplateBinding Background}"
+						HorizontalAlignment="Stretch" 
+						VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name="PART_ElasticBorder"
+							Background="{x:Null}"> 
+                            <ScrollContentPresenter 
+								Margin="-1,-1,-1,-1"
+								Grid.Column="0"
+								Grid.ColumnSpan="1"
+								Grid.Row="0"
+								Grid.RowSpan="1"
+								Content="{TemplateBinding Content}"
+								ContentTemplate="{TemplateBinding ContentTemplate}"
+								CanContentScroll="{TemplateBinding CanContentScroll}"
+								CanHorizontallyScroll="False"
+								CanVerticallyScroll="False"
+								ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        </Border>
+
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+							x:Name="PART_HorizontalScrollBar"
+							Grid.Column="0"
+							Grid.Row="1"
+							Orientation="Horizontal"
+							Maximum="{TemplateBinding ScrollableWidth}"
+							Minimum="0"
+							Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="HorizontalScrollBar"
+							Height="Auto"
+							Style="{StaticResource SurfaceScrollBarStyle}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportWidth}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"/>
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+							x:Name="PART_VerticalScrollBar"                           
+							Grid.Column="1"
+							Grid.Row="0"
+							Orientation="Vertical"
+							Maximum="{TemplateBinding ScrollableHeight}"
+							Minimum="0"
+							Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="VerticalScrollBar"
+							Width="Auto"
+							Style="{StaticResource SurfaceScrollBarStyle}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportHeight}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"
+							IsEnabled="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_HorizontalScrollBar"
+								Value="False" />
+                            <Setter Property="IsEnabled"
+								TargetName="PART_VerticalScrollBar"
+								Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	
+    <!-- ScrollViewerBase -->
+    <Style x:Key="SurfaceScrollViewerStyleWhiteBorderBrownInlay"
+		TargetType="{x:Type Custom:SurfaceScrollViewer}">
+        <Setter Property="Elasticity"
+			Value="0.4,0.4" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollViewer}">
+                    <Grid   Background="{TemplateBinding Background}"
+						HorizontalAlignment="Stretch" 
+						VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name="PART_ElasticBorder"
+							Background="{x:Null}"> 
+                            <ScrollContentPresenter 
+								Margin="-1,-1,-1,-1"
+								Grid.Column="0"
+								Grid.ColumnSpan="1"
+								Grid.Row="0"
+								Grid.RowSpan="1"
+								Content="{TemplateBinding Content}"
+								ContentTemplate="{TemplateBinding ContentTemplate}"
+								CanContentScroll="{TemplateBinding CanContentScroll}"
+								CanHorizontallyScroll="False"
+								CanVerticallyScroll="False"
+								ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        </Border>
+
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+							x:Name="PART_HorizontalScrollBar"
+							Grid.Column="0"
+							Grid.Row="1"
+							Orientation="Horizontal"
+							Maximum="{TemplateBinding ScrollableWidth}"
+							Minimum="0"
+							Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="HorizontalScrollBar"
+							Height="Auto"
+							Style="{StaticResource SurfaceScrollBarStyleBrown}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportWidth}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"/>
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+							x:Name="PART_VerticalScrollBar"                           
+							Grid.Column="1"
+							Grid.Row="0"
+							Orientation="Vertical"
+							Maximum="{TemplateBinding ScrollableHeight}"
+							Minimum="0"
+							Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="VerticalScrollBar"
+							Width="Auto"
+							Style="{StaticResource SurfaceScrollBarStyle}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportHeight}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"
+							IsEnabled="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_HorizontalScrollBar"
+								Value="False" />
+                            <Setter Property="IsEnabled"
+								TargetName="PART_VerticalScrollBar"
+								Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ScrollViewerBase -->
+    <Style x:Key="SurfaceScrollViewerStyleWhiteWithGreyBorder"
+		TargetType="{x:Type Custom:SurfaceScrollViewer}">
+        <Setter Property="Elasticity"
+			Value="0.4,0.4" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+			Value="Auto" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceScrollViewer}">
+                    <Grid   Background="{TemplateBinding Background}"
+						HorizontalAlignment="Stretch" 
+						VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name="PART_ElasticBorder"
+							Background="{x:Null}" BorderBrush="Gray" BorderThickness="1">
+                            <ScrollContentPresenter 
+								Margin="-1,-1,-1,-1"
+								Grid.Column="0"
+								Grid.ColumnSpan="1"
+								Grid.Row="0"
+								Grid.RowSpan="1"
+								Content="{TemplateBinding Content}"
+								ContentTemplate="{TemplateBinding ContentTemplate}"
+								CanContentScroll="{TemplateBinding CanContentScroll}"
+								CanHorizontallyScroll="False"
+								CanVerticallyScroll="False"
+								ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        </Border>
+
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+							x:Name="PART_HorizontalScrollBar"
+							Grid.Column="0"
+							Grid.Row="1"
+							Orientation="Horizontal"
+							Maximum="{TemplateBinding ScrollableWidth}"
+							Minimum="0"
+							Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="HorizontalScrollBar"
+							Height="Auto"
+							Style="{StaticResource SurfaceScrollBarStyle}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportWidth}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"/>
+                        <Custom:SurfaceScrollBar Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+							x:Name="PART_VerticalScrollBar"                           
+							Grid.Column="1"
+							Grid.Row="0"
+							Orientation="Vertical"
+							Maximum="{TemplateBinding ScrollableHeight}"
+							Minimum="0"
+							Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+							AutomationProperties.AutomationId="VerticalScrollBar"
+							Width="Auto"
+							Style="{StaticResource SurfaceScrollBarStyle}"
+							LargeChange="1"
+							ViewportSize="{TemplateBinding ViewportHeight}"
+							ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+							HorizontalContentAlignment="Stretch"
+							VerticalContentAlignment="Stretch"
+							HorizontalAlignment="Stretch"
+							Foreground="{x:Null}"
+							IsEnabled="True"
+                            BorderBrush="Gray" BorderThickness="1"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="IsEnabled"
+								TargetName="PART_HorizontalScrollBar"
+								Value="False" />
+                            <Setter Property="IsEnabled"
+								TargetName="PART_VerticalScrollBar"
+								Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ### Stuff for Error Measure Slider       -->
+    
+    <Style x:Key="SliderToolTipStyle"
+    	TargetType="{x:Type Label}">
+    	<Setter Property="Visibility"
+    		Value="Collapsed"/>
+    	<Setter Property="ClipToBounds"
+    		Value="False"/>
+    	<Setter Property="Background"
+    		Value="{DynamicResource {x:Static Custom:SurfaceColors.ToolTipBackgroundBrushKey}}"/>
+    	<Setter Property="Foreground"
+    		Value="{DynamicResource {x:Static Custom:SurfaceColors.ToolTipForegroundBrushKey}}"/>
+    	<Setter Property="Padding"
+    		Value="5,2,5,3"/>
+    	<Setter Property="Template">
+    		<Setter.Value>
+    			<ControlTemplate TargetType="{x:Type Label}">
+    				<Grid Background="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundBrushKey}}" >
+    					<Border						  
+    						HorizontalAlignment="Stretch"                          
+    						Background="{TemplateBinding Background}"                   
+    						Opacity="{TemplateBinding Opacity}">
+    						<TextBlock
+    							Margin="{TemplateBinding Padding}"
+    							Foreground="{TemplateBinding Foreground}"                            
+    							Text="{TemplateBinding Content}"/>
+    					</Border>
+    				</Grid>
+    			</ControlTemplate>
+    		</Setter.Value>
+    	</Setter>
+    </Style>
+    <Style x:Key="SliderHorzDecreaseRepeatButtonStyle"
+    	TargetType="{x:Type Custom:SurfaceRepeatButton}" >
+    	<Setter Property="Interval"
+    		Value="150"/>
+    	<Setter Property="OverridesDefaultStyle" 
+    		Value="True"/>
+    	<Setter Property="IsTabStop" 
+    		Value="False"/>
+    	<Setter Property="Focusable" 
+    		Value="False"/>
+    	<Setter Property="Template" >
+    		<Setter.Value>
+    			<ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+    				<Grid Background="{StaticResource ControlHitAreaBrush}" MinHeight="38" MaxHeight="38">
+    					<Rectangle VerticalAlignment="Top"
+    						Margin="1,14,1,0"	
+    						MinHeight="2"	
+    						Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackDecreaseBackgroundBrushKey}}"/>
+    				</Grid>
+    			</ControlTemplate>
+    		</Setter.Value>
+    	</Setter>
+    </Style>
+    <Style x:Key="SliderHorzIncreaseRepeatButtonStyle"
+    	TargetType="{x:Type Custom:SurfaceRepeatButton}" >
+    	<Setter Property="Interval"
+    		Value="150"/>
+    	<Setter Property="OverridesDefaultStyle" 
+    		Value="True"/>
+    	<Setter Property="IsTabStop" 
+    		Value="False"/>
+    	<Setter Property="Focusable" 
+    		Value="False"/>
+    	<Setter Property="Template">
+    		<Setter.Value>
+    			<ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+    				<Grid Background="{StaticResource ControlHitAreaBrush}" MinHeight="38" MaxHeight="38">
+    					<Rectangle  VerticalAlignment="Top"
+    						Margin="1,14,1,0"
+    						MinHeight="2"
+    						Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackIncreaseBackgroundBrushKey}}"/>
+    				</Grid>
+    			</ControlTemplate>
+    		</Setter.Value>
+    	</Setter>
+    </Style>
+    <Style x:Key="SurfaceThumbStyle"
+    	TargetType="{x:Type Custom:SurfaceThumb}"
+    	BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+    	<Setter Property="Custom:TouchVisualizer.Adapter">
+    		<Setter.Value>
+    			<Custom:RectangleTouchVisualizerAdapter RadiusX="15"
+    				RadiusY="15"/>
+    		</Setter.Value>
+    	</Setter>
+    	<Setter Property="MinHeight" Value="6"/>
+    	<Setter Property="MinWidth" Value="6"/>
+    	<Setter Property="Template">
+    		<Setter.Value>
+    			<ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+    				<ControlTemplate.Resources>
+          <!-- Horizontal orientation -->
+    					<Storyboard x:Key="Touch">
+    						<DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Width" 
+    							To="38"/>
+    						<DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height" 
+    							To="16"/>
+    						<ThicknessAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin"
+    							To="-16,7,-16,0" />
+    					</Storyboard>
+    					<Storyboard x:Key="Release">
+    						<DoubleAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb" 
+    							Storyboard.TargetProperty="Width"
+    							To="6"/>
+    						<DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height" 
+    							To="14"/>
+    						<ThicknessAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin" 
+    							To="0,8,0,0" />
+    					</Storyboard>
+    				</ControlTemplate.Resources>
+    				<Grid x:Name="Grid" >
+    					<Rectangle x:Name="HitArea"                           
+    						HorizontalAlignment="Stretch"
+    						VerticalAlignment="Stretch"
+    						Width="38" 
+    						Height="38" 
+    						Margin="-18,0,-18,0"						   
+    						Fill="{StaticResource ControlHitAreaBrush}" />
+    					<Rectangle x:Name="Thumb"
+    						Margin="0,8,0,0"
+    						Width="6"
+    						Height="14"
+    						HorizontalAlignment="Center"
+    						VerticalAlignment="Top"
+    						Fill="{DynamicResource {x:Static Custom:SurfaceColors.ThumbEnabledBrushKey}}"/>
+    				</Grid>
+    				<ControlTemplate.Triggers>
+    					<Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+    						Value="True">
+    						<Trigger.EnterActions>
+    							<BeginStoryboard Storyboard="{StaticResource Touch}" />
+    						</Trigger.EnterActions>
+    						<Trigger.ExitActions>
+    							<BeginStoryboard Storyboard="{StaticResource Release}" />
+    						</Trigger.ExitActions>
+    					</Trigger>
+    					<Trigger Property="IsEnabled"
+    						Value="False">
+    						<Setter TargetName="Thumb"
+    							Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"
+    							Property="Fill"/>
+    					</Trigger>
+    				</ControlTemplate.Triggers>
+    			</ControlTemplate>
+    		</Setter.Value>
+    	</Setter>
+    </Style>
+    <Style x:Key="SurfaceSliderHorzThumbStyle"
+    	TargetType="{x:Type Custom:SurfaceThumb}"
+    	BasedOn="{StaticResource SurfaceThumbStyle}">
+    	<Setter Property="MaxHeight" Value="38"/>
+    </Style>
+    
+    <Style x:Key="SliderVertDecreaseRepeatButtonStyle"
+    	TargetType="{x:Type Custom:SurfaceRepeatButton}" 
+    	BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+    	<Setter Property="Interval"
+    		Value="150"/>
+    	<Setter Property="OverridesDefaultStyle" 
+    		Value="True"/>
+    	<Setter Property="IsTabStop" 
+    		Value="False"/>
+    	<Setter Property="Focusable" 
+    		Value="False"/>
+        <Setter Property="HorizontalAlignment" 
+    		Value="Left"/>
+    	<Setter Property="Template">
+    		<Setter.Value>
+    			<ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+    				<Grid Background="{StaticResource ControlHitAreaBrush}" MinWidth="38" MaxWidth="38">
+    					<Rectangle HorizontalAlignment="Left"
+    						Margin="5,1,0,1"
+    						MinWidth="2"
+    						Fill="#FFE7EAEA"
+								 Stroke="#FFAEB1AF"                                        
+								 StrokeThickness="0.2"/>
+                        <!-- {DynamicResource {x:Static Custom:SurfaceColors.SliderTrackDecreaseBackgroundBrushKey}}" -->
+    				</Grid>
+    			</ControlTemplate>
+    		</Setter.Value>
+    	</Setter>
+    </Style>
+    <Style x:Key="SliderVertIncreaseRepeatButtonStyle"
+    	TargetType="{x:Type Custom:SurfaceRepeatButton}" 
+    	BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+    	<Setter Property="Interval"		
+    		Value="150"/>
+    	<Setter Property="OverridesDefaultStyle" 
+    		Value="True"/>
+    	<Setter Property="IsTabStop" 
+    		Value="False"/>
+    	<Setter Property="Focusable" 
+    		Value="False"/>
+        <Setter Property="HorizontalAlignment" 
+    		Value="Left"/>
+        <Setter Property="Template">
+    		<Setter.Value>
+    			<ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+    				<Grid Background="{StaticResource ControlHitAreaBrush}" MinWidth="38" MaxWidth="38">
+    					<Rectangle HorizontalAlignment="Left"
+    						Margin="5,1,0,1"
+    						MinWidth="2"
+    						Fill="#FFE7EAEA"
+								 Stroke="#FFAEB1AF"                                        
+								 StrokeThickness="0.2"/>
+                        <!-- 
+    						Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackIncreaseBackgroundBrushKey}}"/> -->
+    				</Grid>
+    			</ControlTemplate>
+    		</Setter.Value>
+    	</Setter>
+    </Style>
+    
+
+        <Style x:Key="SurfaceSliderVertThumbStyle"
+    	TargetType="{x:Type Custom:SurfaceThumb}"
+    	BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Custom:TouchVisualizer.Adapter">
+                <Setter.Value>
+                    <Custom:RectangleTouchVisualizerAdapter   RadiusX="15"
+    				RadiusY="15"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="MinHeight" Value="6"/>
+            <Setter Property="MinWidth" Value="6"/>
+            <!--<Setter Property="Width" Value="240"/>-->
+            <Setter Property="MaxWidth" Value="400"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Touch">
+                                <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Width" 
+    							To="16"/>
+                                <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height" 
+    							To="30"/>
+                                <ThicknessAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin"
+    							To="0,-19,0,-19" />
+                            </Storyboard>
+                            <Storyboard x:Key="Release">
+                                <DoubleAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							To="14"
+    							Storyboard.TargetProperty="Width"/>
+                                <DoubleAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height"
+    							To="23"/>
+                                <ThicknessAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin"
+    							To="0,0,0,0" />
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="Grid">
+                            <Rectangle	x:Name="HitArea"                       
+	    						HorizontalAlignment="Left"
+	    						VerticalAlignment="Center"
+	    						Width="30" 
+	    						Height="38" 
+	    						Margin="-5,-19,0,-19"
+	    						Fill="{StaticResource ControlHitAreaBrush}" /> <!-- Fill="{StaticResource ControlHitAreaBrush}" #22FFFFFF -->
+                            <Rectangle x:Name="SelectionThumb" RadiusX="2"  RadiusY="2"
+	    						Width="295"
+	    						Height="23"
+	    						HorizontalAlignment="Left"
+	    						VerticalAlignment="Center"
+	    						Fill="#20FFFFFF"/> 
+                            <Rectangle x:Name="Thumb" RadiusX="2"  RadiusY="2"
+	    						Width="14"
+	    						Height="30"
+	    						HorizontalAlignment="Left"
+	    						VerticalAlignment="Center"
+	    						Fill="#9C84B1"
+	                            Stroke="White"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled"
+    						Value="False">
+                                <Setter TargetName="Thumb"
+    							Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"
+    							Property="Fill"/>
+                            </Trigger>
+                            <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+    						Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Touch}" />
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Release}" />
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--Slider for error measures -->
+		<Style x:Key="ErrorMeasureSurfaceSliderStyle" TargetType="{x:Type Custom:SurfaceSlider}"
+			BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+			<Setter Property="Stylus.IsFlicksEnabled"
+				Value="False"/>
+			<Setter Property="Background"
+				Value="#00FFFFFF"/>
+			<Setter Property="IsMoveToPointEnabled"
+				Value="False"/>
+			<Setter Property="BorderBrush"
+				Value="{DynamicResource {x:Static Custom:SurfaceColors.SliderForegroundBrushKey}}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+        <!-- Horizontal Orientation -->
+						<Grid x:Name="GridRoot"
+							Background="{TemplateBinding Background}"
+							VerticalAlignment="Stretch"
+							Height="Auto">
+							<Canvas ClipToBounds="False">
+								<Label x:Name="PART_SurfaceToolTip"
+									Style="{StaticResource SliderToolTipStyle}"/>
+							</Canvas>
+							<Grid Margin="16,0,16,0" VerticalAlignment="Top" Height="28">
+            <!-- TickBar shows the ticks for Slider -->
+								<TickBar x:Name="TopTick"
+									Visibility="Collapsed"                    
+									Height="4"
+									Placement="Top"
+									Fill="{TemplateBinding BorderBrush}"                     
+									ReservedSpace="0"                             
+									VerticalAlignment="Top"
+									IsDirectionReversed="False"/>
+								<TickBar x:Name="BottomTick"
+									Visibility="Collapsed"                    
+									Height="4" 
+									Placement="Bottom"
+									Fill="{TemplateBinding BorderBrush}"
+									ReservedSpace="0"                             
+									VerticalAlignment="Bottom"
+									IsDirectionReversed="False"/>
+								<Canvas VerticalAlignment="Center" Margin="-1,-8,0,0">
+									<Rectangle x:Name="PART_SelectionRange" 
+										Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderRangeBrushKey}}"                                    
+										Height="8"
+										Visibility="Hidden"/>
+								</Canvas>
+            <!-- The Track lays out the repeat buttons and thumb -->
+								<Track  x:Name="PART_Track" VerticalAlignment="Center" Margin="0,-1,0,0">
+									<Track.DecreaseRepeatButton>
+										<Custom:SurfaceRepeatButton x:Name="SliderDecrease"
+											Margin="-1,0,-1,0"	
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											Style="{StaticResource SliderHorzDecreaseRepeatButtonStyle}"
+											Command="Slider.DecreaseLarge"/>
+									</Track.DecreaseRepeatButton>
+									<Track.IncreaseRepeatButton>
+										<Custom:SurfaceRepeatButton x:Name="SliderIncrease" 
+											Margin="-1,0,-1,0"
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											Style="{StaticResource SliderHorzIncreaseRepeatButtonStyle}"
+											Command="Slider.IncreaseLarge"/>
+									</Track.IncreaseRepeatButton>
+									<Track.Thumb>
+										<Custom:SurfaceThumb  Style="{StaticResource SurfaceSliderHorzThumbStyle}"
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											x:Name="Thumb" />
+									</Track.Thumb>
+								</Track>
+							</Grid>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelectionRangeEnabled" 
+								Value="True">
+								<Setter Property="Visibility" 
+									TargetName="PART_SelectionRange" 
+									Value="Visible"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="TopLeft">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="TopTick"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="BottomRight">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="BottomTick"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="Both">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="TopTick"/>
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="BottomTick"/>
+							</Trigger>
+							<Trigger Property="IsEnabled"
+								Value="False">
+								<Setter Property="Opacity"  
+									TargetName="SliderDecrease"                              
+									Value="0.25"/>
+								<Setter Property="Opacity"  
+									TargetName="SliderIncrease"                              
+									Value="0.5"/>
+								<Setter Property="Opacity"  
+									TargetName="TopTick"                              
+									Value="0.25"/>
+								<Setter Property="Opacity"  
+									TargetName="BottomTick"                              
+									Value="0.25"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+
+			<Style.Triggers>
+    <!-- Vertical orientation -->
+				<Trigger Property="Orientation"
+					Value="Vertical">
+					<Setter Property="Template">
+						<!--Change the whole template-->
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+								<Grid x:Name="GridRoot"
+									Background="{TemplateBinding Background}"
+									HorizontalAlignment="Left"
+									Width="Auto">
+									<Grid Margin="0,16,0,16" HorizontalAlignment="Left" Width="320">
+										<TickBar x:Name="TopTick"
+											Visibility="Collapsed"
+											Width="4"
+											Placement="Left"
+											Fill="{TemplateBinding BorderBrush}"
+											ReservedSpace="0"
+											HorizontalAlignment="Left"
+											IsDirectionReversed="False"/>
+										<TickBar x:Name="BottomTick"
+											Visibility="Collapsed"
+											Width="4"
+											Placement="Right"
+											Fill="{TemplateBinding BorderBrush}"
+											ReservedSpace="0"
+											HorizontalAlignment="Right"
+											IsDirectionReversed="False"/>
+										<Canvas HorizontalAlignment="Center" Margin="-8,1,0,0">
+											<Rectangle x:Name="PART_SelectionRange"
+												Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackIncreaseBackgroundBrushKey}}"                                                
+												Width="8"
+												Visibility="Hidden"/>
+										</Canvas>
+                <!-- The Track lays out the repeat buttons and thumb -->
+										<Track  x:Name="PART_Track" HorizontalAlignment="Center">
+											<Track.DecreaseRepeatButton>
+												<Custom:SurfaceRepeatButton x:Name="SliderDecrease"
+													Margin="0,-1,0,-1"	
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													Style="{StaticResource SliderVertDecreaseRepeatButtonStyle}"
+													Command="Slider.DecreaseLarge"/>
+											</Track.DecreaseRepeatButton>
+											<Track.IncreaseRepeatButton>
+												<Custom:SurfaceRepeatButton x:Name="SliderIncrease"
+													Margin="0,-1,0,-1"	
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													Style="{StaticResource SliderVertIncreaseRepeatButtonStyle}"
+													Command="Slider.IncreaseLarge"/>
+											</Track.IncreaseRepeatButton>
+											<Track.Thumb>
+												<Custom:SurfaceThumb  Style="{StaticResource SurfaceSliderVertThumbStyle}"
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													x:Name="Thumb" />
+											</Track.Thumb>
+										</Track>
+									</Grid>
+									<Canvas ClipToBounds="False">
+										<Label  x:Name="PART_SurfaceToolTip"
+											Style="{StaticResource SliderToolTipStyle}"/>
+									</Canvas>
+								</Grid>
+								<ControlTemplate.Triggers>
+									<Trigger Property="IsSelectionRangeEnabled" 
+										Value="True">
+										<Setter Property="Visibility" 
+											TargetName="PART_SelectionRange" 
+											Value="Visible"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="TopLeft">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="TopTick"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="BottomRight">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="BottomTick"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="Both">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="TopTick"/>
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="BottomTick"/>
+									</Trigger>
+									<Trigger Property="IsEnabled"
+										Value="False">
+										<Setter Property="Opacity"  
+											TargetName="SliderDecrease"                              
+											Value="0.25"/>
+										<Setter Property="Opacity"  
+											TargetName="SliderIncrease"                              
+											Value="0.5"/>
+										<Setter Property="Opacity"  
+											TargetName="TopTick"                              
+											Value="0.25"/>
+										<Setter Property="Opacity"  
+											TargetName="BottomTick"                              
+											Value="0.25"/>
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		
+	
+    <!-- ### Stuff for Instance Control Slider       -->	
+	<Style x:Key="InstanceControlSurfaceSliderVertThumbStyle"
+    	TargetType="{x:Type Custom:SurfaceThumb}"
+    	BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Custom:TouchVisualizer.Adapter">
+                <Setter.Value>
+                    <Custom:RectangleTouchVisualizerAdapter   RadiusX="15"
+    				RadiusY="15"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="MinHeight" Value="6"/>
+            <Setter Property="MinWidth" Value="6"/>
+            <!--<Setter Property="Width" Value="240"/>-->
+            <Setter Property="MaxWidth" Value="400"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Touch">
+                                <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Width" 
+    							To="16"/>
+                                <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height" 
+    							To="30"/>
+                                <ThicknessAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin"
+    							To="0,-19,0,-19" />
+                            </Storyboard>
+                            <Storyboard x:Key="Release">
+                                <DoubleAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							To="14"
+    							Storyboard.TargetProperty="Width"/>
+                                <DoubleAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height"
+    							To="23"/>
+                                <ThicknessAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin"
+    							To="0,0,0,0" />
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="Grid">
+                            <Rectangle	x:Name="HitArea"                       
+	    						HorizontalAlignment="Left"
+	    						VerticalAlignment="Center"
+	    						Width="30" 
+	    						Height="38" 
+	    						Margin="-5,-19,0,-19"
+	    						Fill="{StaticResource ControlHitAreaBrush}" /> <!-- Fill="{StaticResource ControlHitAreaBrush}" #22FFFFFF -->
+                            <Rectangle x:Name="SelectionThumb" RadiusX="2"  RadiusY="2"
+	    						Width="275"
+	    						Height="23"
+	    						HorizontalAlignment="Left"
+	    						VerticalAlignment="Center"
+	    						Fill="#20FFFFFF"/> 
+                            <Rectangle x:Name="Thumb" RadiusX="2"  RadiusY="2"
+	    						Width="14"
+	    						Height="30"
+	    						HorizontalAlignment="Left"
+	    						VerticalAlignment="Center"
+	    						Fill="#FF645A52"
+	                            Stroke="White"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled"
+    						Value="False">
+                                <Setter TargetName="Thumb"
+    							Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"
+    							Property="Fill"/>
+                            </Trigger>
+                            <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+    						Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Touch}" />
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource Release}" />
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+		
+		<Style x:Key="InstanceControlSurfaceSliderStyle" TargetType="{x:Type Custom:SurfaceSlider}"
+			BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+			<Setter Property="Stylus.IsFlicksEnabled"
+				Value="False"/>
+			<Setter Property="Background"
+				Value="#00FFFFFF"/>
+			<Setter Property="IsMoveToPointEnabled"
+				Value="False"/>
+			<Setter Property="BorderBrush"
+				Value="{DynamicResource {x:Static Custom:SurfaceColors.SliderForegroundBrushKey}}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+        <!-- Horizontal Orientation -->
+						<Grid x:Name="GridRoot"
+							Background="{TemplateBinding Background}"
+							VerticalAlignment="Stretch"
+							Height="Auto">
+							<Canvas ClipToBounds="False">
+								<Label x:Name="PART_SurfaceToolTip"
+									Style="{StaticResource SliderToolTipStyle}"/>
+							</Canvas>
+							<Grid Margin="16,0,16,0" VerticalAlignment="Top" Height="28">
+            <!-- TickBar shows the ticks for Slider -->
+								<TickBar x:Name="TopTick"
+									Visibility="Collapsed"                    
+									Height="4"
+									Placement="Top"
+									Fill="{TemplateBinding BorderBrush}"                     
+									ReservedSpace="0"                             
+									VerticalAlignment="Top"
+									IsDirectionReversed="False"/>
+								<TickBar x:Name="BottomTick"
+									Visibility="Collapsed"                    
+									Height="4" 
+									Placement="Bottom"
+									Fill="{TemplateBinding BorderBrush}"
+									ReservedSpace="0"                             
+									VerticalAlignment="Bottom"
+									IsDirectionReversed="False"/>
+								<Canvas VerticalAlignment="Center" Margin="-1,-8,0,0">
+									<Rectangle x:Name="PART_SelectionRange" 
+										Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderRangeBrushKey}}"                                    
+										Height="8"
+										Visibility="Hidden"/>
+								</Canvas>
+            <!-- The Track lays out the repeat buttons and thumb -->
+								<Track  x:Name="PART_Track" VerticalAlignment="Center" Margin="0,-1,0,0">
+									<Track.DecreaseRepeatButton>
+										<Custom:SurfaceRepeatButton x:Name="SliderDecrease"
+											Margin="-1,0,-1,0"	
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											Style="{StaticResource SliderHorzDecreaseRepeatButtonStyle}"
+											Command="Slider.DecreaseLarge"/>
+									</Track.DecreaseRepeatButton>
+									<Track.IncreaseRepeatButton>
+										<Custom:SurfaceRepeatButton x:Name="SliderIncrease" 
+											Margin="-1,0,-1,0"
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											Style="{StaticResource SliderHorzIncreaseRepeatButtonStyle}"
+											Command="Slider.IncreaseLarge"/>
+									</Track.IncreaseRepeatButton>
+									<Track.Thumb>
+										<Custom:SurfaceThumb  Style="{StaticResource SurfaceSliderHorzThumbStyle}"
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											x:Name="Thumb" />
+									</Track.Thumb>
+								</Track>
+							</Grid>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelectionRangeEnabled" 
+								Value="True">
+								<Setter Property="Visibility" 
+									TargetName="PART_SelectionRange" 
+									Value="Visible"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="TopLeft">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="TopTick"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="BottomRight">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="BottomTick"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="Both">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="TopTick"/>
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="BottomTick"/>
+							</Trigger>
+							<Trigger Property="IsEnabled"
+								Value="False">
+								<Setter Property="Opacity"  
+									TargetName="SliderDecrease"                              
+									Value="0.25"/>
+								<Setter Property="Opacity"  
+									TargetName="SliderIncrease"                              
+									Value="0.5"/>
+								<Setter Property="Opacity"  
+									TargetName="TopTick"                              
+									Value="0.25"/>
+								<Setter Property="Opacity"  
+									TargetName="BottomTick"                              
+									Value="0.25"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+
+			<Style.Triggers>
+    <!-- Vertical orientation -->
+				<Trigger Property="Orientation"
+					Value="Vertical">
+					<Setter Property="Template">
+						<!--Change the whole template-->
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+								<Grid x:Name="GridRoot"
+									Background="{TemplateBinding Background}"
+									HorizontalAlignment="Left"
+									Width="Auto">
+									<Grid Margin="0,16,0,16" HorizontalAlignment="Left" Width="320">
+										<TickBar x:Name="TopTick"
+											Visibility="Collapsed"
+											Width="4"
+											Placement="Left"
+											Fill="{TemplateBinding BorderBrush}"
+											ReservedSpace="0"
+											HorizontalAlignment="Left"
+											IsDirectionReversed="False"/>
+										<TickBar x:Name="BottomTick"
+											Visibility="Collapsed"
+											Width="4"
+											Placement="Right"
+											Fill="{TemplateBinding BorderBrush}"
+											ReservedSpace="0"
+											HorizontalAlignment="Right"
+											IsDirectionReversed="False"/>
+										<Canvas HorizontalAlignment="Center" Margin="-8,1,0,0">
+											<Rectangle x:Name="PART_SelectionRange"
+												Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackIncreaseBackgroundBrushKey}}"                                                
+												Width="8"
+												Visibility="Hidden"/>
+										</Canvas>
+                <!-- The Track lays out the repeat buttons and thumb -->
+										<Track  x:Name="PART_Track" HorizontalAlignment="Center">
+											<Track.DecreaseRepeatButton>
+												<Custom:SurfaceRepeatButton x:Name="SliderDecrease"
+													Margin="0,-1,0,-1"	
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													Style="{StaticResource SliderVertDecreaseRepeatButtonStyle}"
+													Command="Slider.DecreaseLarge"/>
+											</Track.DecreaseRepeatButton>
+											<Track.IncreaseRepeatButton>
+												<Custom:SurfaceRepeatButton x:Name="SliderIncrease"
+													Margin="0,-1,0,-1"	
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													Style="{StaticResource SliderVertIncreaseRepeatButtonStyle}"
+													Command="Slider.IncreaseLarge"/>
+											</Track.IncreaseRepeatButton>
+											<Track.Thumb>
+												<Custom:SurfaceThumb  Style="{StaticResource InstanceControlSurfaceSliderVertThumbStyle}"
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													x:Name="Thumb" />
+											</Track.Thumb>
+										</Track>
+									</Grid>
+									<Canvas ClipToBounds="False">
+										<Label  x:Name="PART_SurfaceToolTip"
+											Style="{StaticResource SliderToolTipStyle}"/>
+									</Canvas>
+								</Grid>
+								<ControlTemplate.Triggers>
+									<Trigger Property="IsSelectionRangeEnabled" 
+										Value="True">
+										<Setter Property="Visibility" 
+											TargetName="PART_SelectionRange" 
+											Value="Visible"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="TopLeft">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="TopTick"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="BottomRight">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="BottomTick"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="Both">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="TopTick"/>
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="BottomTick"/>
+									</Trigger>
+									<Trigger Property="IsEnabled"
+										Value="False">
+										<Setter Property="Opacity"  
+											TargetName="SliderDecrease"                              
+											Value="0.25"/>
+										<Setter Property="Opacity"  
+											TargetName="SliderIncrease"                              
+											Value="0.5"/>
+										<Setter Property="Opacity"  
+											TargetName="TopTick"                              
+											Value="0.25"/>
+										<Setter Property="Opacity"  
+											TargetName="BottomTick"                              
+											Value="0.25"/>
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+
+    <!-- ### Stuff for Numeric Value Slider       -->
+    <Style x:Key="SliderHorzDecreaseRepeatButtonStyle2"
+    	TargetType="{x:Type Custom:SurfaceRepeatButton}" >
+        <Setter Property="Interval"
+    		Value="150"/>
+        <Setter Property="OverridesDefaultStyle" 
+    		Value="True"/>
+        <Setter Property="IsTabStop" 
+    		Value="False"/>
+        <Setter Property="Focusable" 
+    		Value="False"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                    <Grid Background="{StaticResource ControlHitAreaBrush}" MinHeight="38" MaxHeight="38">
+                        <Rectangle VerticalAlignment="Top"
+    						Margin="1,20,1,0"	
+    						MinHeight="2"	 Height="6"
+    						Fill="White"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="SliderHorzIncreaseRepeatButtonStyle2"
+    	TargetType="{x:Type Custom:SurfaceRepeatButton}" >
+        <Setter Property="Interval"
+    		Value="150"/>
+        <Setter Property="OverridesDefaultStyle" 
+    		Value="True"/>
+        <Setter Property="IsTabStop" 
+    		Value="False"/>
+        <Setter Property="Focusable" 
+    		Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+                    <Grid Background="{StaticResource ControlHitAreaBrush}" MinHeight="38" MaxHeight="38">
+                        <Rectangle  VerticalAlignment="Top"
+    						Margin="1,20,1,0"
+    						MinHeight="2" Height="6"
+    						Fill="Gray"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="SurfaceThumbStyle2"
+    	TargetType="{x:Type Custom:SurfaceThumb}"
+    	BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+        <Setter Property="Custom:TouchVisualizer.Adapter">
+            <Setter.Value>
+                <Custom:RectangleTouchVisualizerAdapter RadiusX="15"
+    				RadiusY="15"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MinHeight" Value="6"/>
+        <Setter Property="MinWidth" Value="6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+                    <ControlTemplate.Resources>
+                        <!-- Horizontal orientation -->
+                        <Storyboard x:Key="Touch">
+                            <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Width" 
+    							To="16"/>
+                            <!--  <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height" 
+    							To="16"/>
+                            <ThicknessAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin"
+    							To="-16,7,-16,0" /> -->
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb" 
+    							Storyboard.TargetProperty="Width"
+    							To="6"/>
+                            <DoubleAnimation Duration="0:0:0.1"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Height" 
+    							To="22"/>
+                            <ThicknessAnimation Duration="0:0:0.15"
+    							Storyboard.TargetName="Thumb"
+    							Storyboard.TargetProperty="Margin" 
+    							To="0,12,0,-4" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid" >
+                        <Rectangle x:Name="HitArea"                           
+    						HorizontalAlignment="Stretch"
+    						VerticalAlignment="Stretch"
+    						Width="38" 
+    						Height="38" 
+    						Margin="-16,4,-16,4"						   
+    						Fill="{StaticResource ControlHitAreaBrush}" />
+                        <Rectangle x:Name="Thumb"
+    						Margin="0,12,0,-4"
+    						Width="6"
+    						Height="22"
+    						HorizontalAlignment="Center"
+    						VerticalAlignment="Top"
+    						Fill="White"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+    						Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Touch}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}" />
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+    						Value="False">
+                            <Setter TargetName="Thumb"
+    							Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"
+    							Property="Fill"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="SurfaceSliderHorzThumbStyle2"
+    	TargetType="{x:Type Custom:SurfaceThumb}"
+    	BasedOn="{StaticResource SurfaceThumbStyle2}">
+        <Setter Property="MaxHeight" Value="38"/>
+    </Style>
+
+    <Style x:Key="SliderVertDecreaseRepeatButtonStyle2"
+			TargetType="{x:Type Custom:SurfaceRepeatButton}" 
+			BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+			<Setter Property="Interval"
+				Value="150"/>
+			<Setter Property="OverridesDefaultStyle" 
+				Value="True"/>
+			<Setter Property="IsTabStop" 
+				Value="False"/>
+			<Setter Property="Focusable" 
+				Value="False"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+						<Grid Background="{StaticResource ControlHitAreaBrush}" MinWidth="38" MaxWidth="38">
+							<Rectangle HorizontalAlignment="Left"
+								Margin="12,1,0,1"
+								MinWidth="2"
+								Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackDecreaseBackgroundBrushKey}}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+    
+		<Style x:Key="SliderVertIncreaseRepeatButtonStyle2"
+			TargetType="{x:Type Custom:SurfaceRepeatButton}" 
+			BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+			<Setter Property="Interval"		
+				Value="150"/>
+			<Setter Property="OverridesDefaultStyle" 
+				Value="True"/>
+			<Setter Property="IsTabStop" 
+				Value="False"/>
+			<Setter Property="Focusable" 
+				Value="False"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Custom:SurfaceRepeatButton}">
+						<Grid Background="{StaticResource ControlHitAreaBrush}" MinWidth="38" MaxWidth="38">
+							<Rectangle HorizontalAlignment="Left"
+								Margin="12,1,0,1"
+								MinWidth="2"
+								Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackIncreaseBackgroundBrushKey}}"/>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="SurfaceSliderVertThumbStyle2"
+			TargetType="{x:Type Custom:SurfaceThumb}"
+			BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+			<Setter Property="OverridesDefaultStyle" Value="true"/>
+			<Setter Property="Custom:TouchVisualizer.Adapter">
+				<Setter.Value>
+					<Custom:RectangleTouchVisualizerAdapter   RadiusX="15"
+						RadiusY="15"/>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="MinHeight" Value="6"/>
+			<Setter Property="MinWidth" Value="6"/>
+			<Setter Property="MaxWidth" Value="38"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Custom:SurfaceThumb}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="Touch">
+								<DoubleAnimation Duration="0:0:0.1"
+									Storyboard.TargetName="Thumb"
+									Storyboard.TargetProperty="Width" 
+									To="16"/>
+								<DoubleAnimation Duration="0:0:0.1"
+									Storyboard.TargetName="Thumb"
+									Storyboard.TargetProperty="Height" 
+									To="38"/>
+								<ThicknessAnimation Duration="0:0:0.1"
+									Storyboard.TargetName="Thumb"
+									Storyboard.TargetProperty="Margin"
+									To="-1,-19,-1,-19" />
+							</Storyboard>
+							<Storyboard x:Key="Release">
+								<DoubleAnimation Duration="0:0:0.15"
+									Storyboard.TargetName="Thumb"
+									To="14"
+									Storyboard.TargetProperty="Width"/>
+								<DoubleAnimation Duration="0:0:0.15"
+									Storyboard.TargetName="Thumb"
+									Storyboard.TargetProperty="Height"
+									To="6"/>
+								<ThicknessAnimation Duration="0:0:0.15"
+									Storyboard.TargetName="Thumb"
+									Storyboard.TargetProperty="Margin"
+									To="0,0,0,0" />
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid x:Name="Grid">
+							<Rectangle	x:Name="HitArea"                       
+								HorizontalAlignment="Stretch"
+								VerticalAlignment="Center"
+								Width="38" 
+								Height="38" 
+								Margin="0,-19,0,-19"
+								Fill="{StaticResource ControlHitAreaBrush}" />
+							<Rectangle 	x:Name="Thumb"
+								Width="14"
+								Height="6"
+								HorizontalAlignment="Stretch"
+								VerticalAlignment="Top"
+								Fill="{DynamicResource {x:Static Custom:SurfaceColors.ThumbEnabledBrushKey}}"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsEnabled"
+								Value="False">
+								<Setter TargetName="Thumb"
+									Value="{DynamicResource {x:Static Custom:SurfaceColors.ThumbDisabledBrushKey}}"
+									Property="Fill"/>
+							</Trigger>
+							<Trigger Property="Custom:TouchExtensions.AreAnyInputDevicesCapturedWithin"
+								Value="True">
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource Touch}" />
+								</Trigger.EnterActions>
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource Release}" />
+								</Trigger.ExitActions>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+    <!--Slider for numeric values in start instance panel -->
+    <Style x:Key="NumericValueSliderStyle" TargetType="{x:Type Custom:SurfaceSlider}"
+			BasedOn="{StaticResource SurfaceHitAreaBaseStyle}">
+			<Setter Property="Stylus.IsFlicksEnabled"
+				Value="False"/>
+			<Setter Property="Background"
+				Value="{StaticResource ControlHitAreaBrush}"/>
+			<Setter Property="IsMoveToPointEnabled"
+				Value="False"/>
+			<Setter Property="BorderBrush"
+				Value="{DynamicResource {x:Static Custom:SurfaceColors.SliderForegroundBrushKey}}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+        <!-- Horizontal Orientation -->
+						<Grid x:Name="GridRoot"
+							Background="{TemplateBinding Background}"
+							VerticalAlignment="Stretch"
+							Height="Auto">
+							<Canvas ClipToBounds="False">
+								<Label x:Name="PART_SurfaceToolTip"
+									Style="{StaticResource SliderToolTipStyle}"/>
+							</Canvas>
+							<Grid Margin="16,0,16,0" VerticalAlignment="Top" Height="32">
+            <!-- TickBar shows the ticks for Slider -->
+                                <local:CustomTickBar x:Name="TopTick"
+									Visibility="Collapsed"                    
+									Height="4"
+									Placement="Top"
+									Fill="{TemplateBinding BorderBrush}"                     
+									ReservedSpace="0"                             
+									VerticalAlignment="Top"
+									IsDirectionReversed="False"/>
+                               <!-- <TickBar x:Name="BottomTick"
+									Visibility="Collapsed"                    
+									Height="4" Margin="0,-20,0,0"
+									Placement="Bottom"
+									Fill="White"
+									ReservedSpace="0"                             
+									VerticalAlignment="Bottom"
+									IsDirectionReversed="False"/> -->
+                                <local:CustomTickBar x:Name="NumericBottomTick"
+									Visibility="Collapsed"                    
+									Height="4"  Margin="-5,0,0,0"
+									Placement="Bottom"
+									Fill="White"
+									ReservedSpace="0"                             
+									VerticalAlignment="Bottom"
+									IsDirectionReversed="False"/>
+								<Canvas VerticalAlignment="Center" Margin="-1,-8,0,0">
+									<Rectangle x:Name="PART_SelectionRange" 
+										Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderRangeBrushKey}}"                                    
+										Height="8"
+										Visibility="Hidden"/>
+								</Canvas>
+            <!-- The Track lays out the repeat buttons and thumb -->
+								<Track  x:Name="PART_Track" VerticalAlignment="Center" Margin="0,-1,0,0">
+									<Track.DecreaseRepeatButton>
+										<Custom:SurfaceRepeatButton x:Name="SliderDecrease"
+											Margin="-1,0,-1,0"	
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											Style="{StaticResource SliderHorzDecreaseRepeatButtonStyle2}"
+											Command="Slider.DecreaseLarge"/>
+									</Track.DecreaseRepeatButton>
+									<Track.IncreaseRepeatButton>
+										<Custom:SurfaceRepeatButton x:Name="SliderIncrease" 
+											Margin="-1,0,-1,0"
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											Style="{StaticResource SliderHorzIncreaseRepeatButtonStyle2}"
+											Command="Slider.IncreaseLarge"/>
+									</Track.IncreaseRepeatButton>
+									<Track.Thumb>
+										<Custom:SurfaceThumb  Style="{StaticResource SurfaceSliderHorzThumbStyle2}"
+											Background="{TemplateBinding Background}"
+											SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+											x:Name="Thumb" />
+									</Track.Thumb>
+								</Track>
+							</Grid>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelectionRangeEnabled" 
+								Value="True">
+								<Setter Property="Visibility" 
+									TargetName="PART_SelectionRange" 
+									Value="Visible"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="TopLeft">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="TopTick"/>
+							</Trigger>
+							<Trigger Property="TickPlacement"
+								Value="BottomRight">
+								<!--<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="BottomTick"/> -->
+                            <Setter Property="Visibility"
+									Value="Visible"
+									TargetName="NumericBottomTick"/>
+                        </Trigger>
+							<Trigger Property="TickPlacement"
+								Value="Both">
+								<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="TopTick"/>
+								<!--<Setter Property="Visibility"
+									Value="Visible"
+									TargetName="BottomTick"/> -->
+							</Trigger>
+							<Trigger Property="IsEnabled"
+								Value="False">
+								<Setter Property="Opacity"  
+									TargetName="SliderDecrease"                              
+									Value="0.25"/>
+								<Setter Property="Opacity"  
+									TargetName="SliderIncrease"                              
+									Value="0.5"/>
+								<Setter Property="Opacity"  
+									TargetName="TopTick"                              
+									Value="0.25"/>
+								<!-- <Setter Property="Opacity"  
+									TargetName="BottomTick"                              
+									Value="0.25"/> -->
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+
+			<Style.Triggers>
+    <!-- Vertical orientation -->
+				<Trigger Property="Orientation"
+					Value="Vertical">
+					<Setter Property="Template">
+						<!--Change the whole template-->
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type Custom:SurfaceSlider}">
+								<Grid x:Name="GridRoot"
+									Background="{TemplateBinding Background}"
+									HorizontalAlignment="Stretch"
+									Width="Auto">
+									<Grid Margin="0,16,0,16" HorizontalAlignment="Left" Width="28">
+										<TickBar x:Name="TopTick"
+											Visibility="Collapsed"
+											Width="4"
+											Placement="Left"
+											Fill="{TemplateBinding BorderBrush}"
+											ReservedSpace="0"
+											HorizontalAlignment="Left"
+											IsDirectionReversed="False"/>
+										<TickBar x:Name="BottomTick"
+											Visibility="Collapsed"
+											Width="4"
+											Placement="Right"
+											Fill="{TemplateBinding BorderBrush}"
+											ReservedSpace="0"
+											HorizontalAlignment="Right"
+											IsDirectionReversed="False"/>
+										<Canvas HorizontalAlignment="Center" Margin="-8,1,0,0">
+											<Rectangle x:Name="PART_SelectionRange"
+												Fill="{DynamicResource {x:Static Custom:SurfaceColors.SliderTrackIncreaseBackgroundBrushKey}}"                                                
+												Width="8"
+												Visibility="Hidden"/>
+										</Canvas>
+                <!-- The Track lays out the repeat buttons and thumb -->
+										<Track  x:Name="PART_Track" HorizontalAlignment="Center">
+											<Track.DecreaseRepeatButton>
+												<Custom:SurfaceRepeatButton x:Name="SliderDecrease"
+													Margin="0,-1,0,-1"	
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													Style="{StaticResource SliderVertDecreaseRepeatButtonStyle2}"
+													Command="Slider.DecreaseLarge"/>
+											</Track.DecreaseRepeatButton>
+											<Track.IncreaseRepeatButton>
+												<Custom:SurfaceRepeatButton x:Name="SliderIncrease"
+													Margin="0,-1,0,-1"	
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													Style="{StaticResource SliderVertIncreaseRepeatButtonStyle2}"
+													Command="Slider.IncreaseLarge"/>
+											</Track.IncreaseRepeatButton>
+											<Track.Thumb>
+												<Custom:SurfaceThumb  Style="{StaticResource SurfaceSliderVertThumbStyle2}"
+													Background="{TemplateBinding Background}"
+													SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+													x:Name="Thumb" />
+											</Track.Thumb>
+										</Track>
+									</Grid>
+									<Canvas ClipToBounds="False">
+										<Label  x:Name="PART_SurfaceToolTip"
+											Style="{StaticResource SliderToolTipStyle}"/>
+									</Canvas>
+								</Grid>
+								<ControlTemplate.Triggers>
+									<Trigger Property="IsSelectionRangeEnabled" 
+										Value="True">
+										<Setter Property="Visibility" 
+											TargetName="PART_SelectionRange" 
+											Value="Visible"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="TopLeft">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="TopTick"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="BottomRight">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="BottomTick"/>
+									</Trigger>
+									<Trigger Property="TickPlacement"
+										Value="Both">
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="TopTick"/>
+										<Setter Property="Visibility"
+											Value="Visible"
+											TargetName="BottomTick"/>
+									</Trigger>
+									<Trigger Property="IsEnabled"
+										Value="False">
+										<Setter Property="Opacity"  
+											TargetName="SliderDecrease"                              
+											Value="0.25"/>
+										<Setter Property="Opacity"  
+											TargetName="SliderIncrease"                              
+											Value="0.5"/>
+										<Setter Property="Opacity"  
+											TargetName="TopTick"                              
+											Value="0.25"/>
+										<Setter Property="Opacity"  
+											TargetName="BottomTick"                              
+											Value="0.25"/>
+									</Trigger>
+								</ControlTemplate.Triggers>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+
+</ResourceDictionary>

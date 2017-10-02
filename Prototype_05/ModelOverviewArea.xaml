@@ -1,0 +1,106 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Prototype_05.ModelOverviewArea"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    xmlns:local="clr-namespace:Prototype_05"
+	x:Name="UserControl"
+	Width="610" Height="420"
+    Loaded="AreaLoaded">
+
+	<Grid x:Name="MainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="400"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="570"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+						
+		
+		<Path StrokeThickness="2" Grid.Row="1" Grid.Column="1">
+			<Path.Fill>
+				<SolidColorBrush Color="{DynamicResource Category0ColorFadeNEW}"/>
+			</Path.Fill>
+			<Path.Stroke>
+				<SolidColorBrush Color="{DynamicResource ModelBorder}"/>
+			</Path.Stroke>
+  <Path.Data>
+    <PathGeometry>
+      <PathGeometry.Figures>
+        <PathFigureCollection>
+          <PathFigure x:Name="HidePointTL" StartPoint="0,190" IsClosed="False">
+            <PathFigure.Segments>
+              <PathSegmentCollection>
+                <LineSegment x:Name="HidePointTR" Point="40,210" />
+                <LineSegment x:Name="HidePointBR" Point="40,400" />
+                <LineSegment x:Name="HidePointBL" Point="0,400" />
+              </PathSegmentCollection>
+            </PathFigure.Segments>
+          </PathFigure>
+        </PathFigureCollection>
+      </PathGeometry.Figures>
+    </PathGeometry>
+  </Path.Data>
+</Path>
+
+<Image x:Name="ShowOrHideImage" Grid.Row="1" Grid.Column="1" Source="Images/showmodels.png" VerticalAlignment="Bottom" Width="20" Height="20" Margin="0,0,0,160" RenderTransformOrigin="0.5,0.5" >
+	<Image.LayoutTransform>
+		<TransformGroup>
+			<ScaleTransform ScaleY="1" ScaleX="-1"/>
+			<SkewTransform AngleY="0" AngleX="0"/>
+			<RotateTransform Angle="0"/>
+			<TranslateTransform/>
+		</TransformGroup>
+	</Image.LayoutTransform>
+</Image>
+
+<TextBox x:Name="ShowOrHideText" Grid.Row="1" Grid.Column="1" Text="Hide Process Models" FontSize="14" Style="{DynamicResource TextBox_Simple}"
+			Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="1" Width="200" RenderTransformOrigin="0.5,0.5" >
+	<TextBox.Foreground>
+		<SolidColorBrush Color="{DynamicResource ModelBorder}"/>
+	</TextBox.Foreground>
+	
+				<TextBox.LayoutTransform>
+						<RotateTransform Angle="-90"/>
+				</TextBox.LayoutTransform>
+		</TextBox>
+		
+		<s:SurfaceButton x:Name="ShowHideButton" Grid.Row="1" Grid.Column="1" Height="210" Width="40" BorderThickness="0" Padding="0" VerticalAlignment="Bottom"
+			Background="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource HideShowButtonStyle}"
+			 PreviewTouchDown="ShowHideTouchDown" PreviewTouchUp="ShowHideTouchUp"/>
+
+		<TextBox Grid.RowSpan="2" Grid.Column="0" Text="Process Models" FontSize="20" Style="{DynamicResource TextBox_Simple}"
+			Margin="135,-3,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="1" Width="176" TextAlignment="Center" />
+		
+		<Path StrokeThickness="4" Grid.Row="1" Grid.Column="0" Fill="#22FFFFFF">
+			<Path.Stroke>
+				<SolidColorBrush Color="{DynamicResource ModelBorder}"/>
+			</Path.Stroke>
+  <Path.Data>
+    <PathGeometry>
+      <PathGeometry.Figures>
+        <PathFigureCollection>
+          <PathFigure StartPoint="135,0" IsClosed="False">
+            <PathFigure.Segments>
+              <PathSegmentCollection>
+                <LineSegment Point="0,0" />
+                <LineSegment x:Name="BorderPointBL" Point="0,400" />
+                <LineSegment x:Name="BorderPointBR" Point="570,400" />
+                <LineSegment Point="570,0" />
+                <LineSegment Point="311,0" />
+              </PathSegmentCollection>
+            </PathFigure.Segments>
+          </PathFigure>
+        </PathFigureCollection>
+      </PathGeometry.Figures>
+    </PathGeometry>
+  </Path.Data>
+</Path>
+
+	</Grid>
+</UserControl>

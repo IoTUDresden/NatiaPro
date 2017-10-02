@@ -1,0 +1,516 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Custom="http://schemas.microsoft.com/surface/2008"
+    xmlns:Microsoft_Surface_Presentation_Generic="clr-namespace:Microsoft.Surface.Presentation.Generic;assembly=Microsoft.Surface.Presentation.Generic"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d">
+
+
+    <Style x:Key="Item_ExpandReduceButton" TargetType="{x:Type Custom:SurfaceButton}">
+        <Setter Property="Background"
+			Value="#FF2E492B" />
+        <Setter Property="Grid.Row"
+			Value="2" />
+        <Setter Property="Height"
+			Value="30" />
+        <Setter Property="MinHeight"
+			Value="30" />
+        <Setter Property="Margin"
+			Value="0" />
+    </Style>
+
+    <Style TargetType="{x:Type Control}" x:Key="ControlBaseStyle">
+        <Setter Property="FocusVisualStyle"	
+			Value="{x:Null}"/>
+        <Setter Property="SnapsToDevicePixels"
+			Value="False"/>
+        <Setter Property="FontFamily"
+			Value="Segoe360"/>
+        <Setter Property="FontWeight"
+			Value="Normal"/>
+        <Setter Property="FontSize"
+			Value="17"/>
+        <Setter Property="Padding"
+			Value="6,2,10,10"/>
+        <Setter Property="MinHeight"
+			Value="38"/>
+        <Setter Property="MinWidth"
+			Value="38"/>
+        <Setter Property="Margin"
+			Value="1"/>
+        <Setter Property="HorizontalContentAlignment"
+			Value="Left"/>
+        <Setter Property="VerticalContentAlignment"
+			Value="Top"/>
+        <Setter Property="BorderThickness"
+			Value="2"/>
+    </Style>
+
+    <Style x:Key="MenuSurfaceButtonStyleSimple"
+		TargetType="{x:Type Custom:SurfaceButton}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="MinWidth" Value="{Binding Content.MinWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MinHeight" Value="{Binding Content.MinHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxWidth" Value="{Binding Content.MaxWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxHeight" Value="{Binding Content.MaxHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Width" Value="{Binding Content.Width, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Height" Value="{Binding Content.Height, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceButton}">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CanvasSurfaceButtonStyleSimple"
+		TargetType="{x:Type Canvas}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="MinWidth" Value="{Binding Content.MinWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MinHeight" Value="{Binding Content.MinHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxWidth" Value="{Binding Content.MaxWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxHeight" Value="{Binding Content.MaxHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Width" Value="{Binding Content.Width, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Height" Value="{Binding Content.Height, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+    </Style>
+
+    <Style x:Key="MenuSurfaceButtonStyle"
+		TargetType="{x:Type Custom:SurfaceButton}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="MinWidth" Value="{Binding Content.MinWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MinHeight" Value="{Binding Content.MinHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxWidth" Value="{Binding Content.MaxWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxHeight" Value="{Binding Content.MaxHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Width" Value="{Binding Content.Width, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Height" Value="{Binding Content.Height, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceButton}">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="IsTabStop"
+			Value="False" />
+        <Setter Property="Focusable"
+			Value="True" />
+        <Setter Property="Background"
+			Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundBrushKey}}" />
+        <Setter Property="Foreground"
+			Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonForegroundBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Custom:SurfaceButton}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Press">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+								Storyboard.TargetName="PressOverlay"
+								Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000"
+									Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Release">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+								Storyboard.TargetName="PressOverlay"
+								Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1500000"
+									Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="Grid"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Rectangle  x:Name="ButtonBody"
+							Fill ="{TemplateBinding Background}"
+							SnapsToDevicePixels ="{TemplateBinding SnapsToDevicePixels}"/>
+                        <Rectangle  x:Name="PressOverlay"
+							Opacity="0"
+							Fill ="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundPressedBrushKey}}" 							             
+							SnapsToDevicePixels ="{TemplateBinding SnapsToDevicePixels}"/>
+                        <ContentPresenter  x:Name="Content"
+							Margin="{TemplateBinding Padding}"  
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"		                                                                           
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed"
+							Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource Press}" />
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource Release}" />
+                            </Trigger.ExitActions>
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonForegroundPressedBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+							Value="False">
+                            <Setter Property="Fill"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundDisabledBrushKey}}"
+								TargetName="ButtonBody" />
+                            <Setter Property="Foreground"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonForegroundDisabledBrushKey}}"/>
+                            <Setter Property="Opacity"
+								Value="0.33"
+								TargetName="Content" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	
+	<Style x:Key="LoadModelFile_Button" TargetType="{x:Type Custom:SurfaceButton}">
+		<Setter Property="BorderThickness"
+			Value="0" />
+		<Setter Property="Padding"
+			Value="0" />
+        <Setter Property="Background"
+			Value="#FF415244" />
+        <Setter Property="Height"
+			Value="30" />
+        <Setter Property="MinHeight"
+			Value="30" />
+        <Setter Property="HorizontalAlignment"
+			Value="Left" />
+        <Setter Property="VerticalAlignment"
+			Value="Bottom" />
+        <Setter Property="HorizontalContentAlignment"
+			Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+			Value="Center" />
+    </Style>
+	
+	<Style x:Key="RemoveAdded_Button" TargetType="{x:Type Custom:SurfaceButton}">
+        <Setter Property="Grid.Column"
+			Value="2" />
+        <Setter Property="Height"
+			Value="38" />
+        <Setter Property="Width"
+			Value="38" />
+        <Setter Property="Background"
+			Value="{x:Null}" />
+        <Setter Property="BorderBrush"
+			Value="Gray" />
+        <Setter Property="BorderThickness"
+			Value="2" />
+		<Setter Property="Margin"
+			Value="0" />
+		<Setter Property="Padding"
+			Value="0" />
+        <Setter Property="HorizontalAlignment"
+			Value="Left" />
+        <Setter Property="VerticalAlignment"
+			Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+			Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+			Value="Center" />
+    </Style>
+	
+	<Style x:Key="InstanceOption_Button" TargetType="{x:Type Custom:SurfaceButton}">
+        <Setter Property="Grid.Row"
+			Value="1" />
+        <Setter Property="Height"
+			Value="40" />
+        <Setter Property="Width"
+			Value="40" />
+        <Setter Property="Background"
+			Value="White" />
+        <Setter Property="BorderBrush"
+			Value="Gray" />
+        <Setter Property="BorderThickness"
+			Value="2" />
+		<Setter Property="Margin"
+			Value="10,6,0,0" />
+		<Setter Property="Padding"
+			Value="0" />
+        <Setter Property="HorizontalAlignment"
+			Value="Left" />
+        <Setter Property="VerticalAlignment"
+			Value="Top" />
+        <Setter Property="HorizontalContentAlignment"
+			Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+			Value="Center" />
+    </Style>
+	
+	<Style x:Key="ComboBoxTextItem_Button" TargetType="{x:Type Custom:SurfaceButton}">
+		<Setter Property="BorderThickness"
+			Value="0" />
+		<Setter Property="Padding"
+			Value="0" />
+        <Setter Property="Background"
+			Value="{x:Null}" />
+        <Setter Property="Height"
+			Value="20" />
+        <Setter Property="MinHeight"
+			Value="20" />
+        <Setter Property="HorizontalAlignment"
+			Value="Left" />
+        <Setter Property="VerticalAlignment"
+			Value="Bottom" />
+        <Setter Property="HorizontalContentAlignment"
+			Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+			Value="Center" />
+    </Style>
+	
+	<ControlTemplate x:Key="RemoveMarkingButtonControlTemplate" TargetType="{x:Type ButtonBase}">
+		<ControlTemplate.Resources>
+			<Storyboard x:Key="Press">
+				<DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+					<SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+				</DoubleAnimationUsingKeyFrames>
+			</Storyboard>
+			<Storyboard x:Key="Release">
+				<DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+					<SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="0"/>
+				</DoubleAnimationUsingKeyFrames>
+			</Storyboard>
+		</ControlTemplate.Resources>
+		<Grid x:Name="Grid" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+			<Rectangle x:Name="ButtonBody" Fill="{TemplateBinding Background}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Stroke="Gray" StrokeThickness="1"/>
+			<Rectangle x:Name="PressOverlay" Fill="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}" Opacity="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+			<ContentPresenter x:Name="Content" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsPressed" Value="True">
+				<Trigger.EnterActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+								<SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.EnterActions>
+				<Trigger.ExitActions>
+					<BeginStoryboard>
+						<Storyboard>
+							<DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+								<SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="0"/>
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+					</BeginStoryboard>
+				</Trigger.ExitActions>
+				<Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+			</Trigger>
+			<Trigger Property="IsEnabled" Value="False">
+				<Setter Property="Fill" TargetName="ButtonBody" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+				<Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+				<Setter Property="Opacity" TargetName="Content" Value="0.33"/>
+			</Trigger>
+		</ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="OptionsButtonControlTemplate" TargetType="{x:Type ButtonBase}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="Press">
+                <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                    <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Release">
+                <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                    <SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid x:Name="Grid" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+            <Rectangle x:Name="ButtonBody" Fill="{TemplateBinding Background}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Stroke="Gray" StrokeThickness="2"/>
+            <Rectangle x:Name="PressOverlay" Fill="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}" Opacity="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <ContentPresenter x:Name="Content" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+                <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Fill" TargetName="ButtonBody" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+                <Setter Property="Opacity" TargetName="Content" Value="0.33"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <ControlTemplate x:Key="ModelMenu_ButtonControlTemplate" TargetType="{x:Type ButtonBase}">
+        <ControlTemplate.Resources>
+            <Storyboard x:Key="Press">
+                <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                    <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Release">
+                <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                    <SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        </ControlTemplate.Resources>
+        <Grid x:Name="Grid" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+            <Rectangle x:Name="ButtonBody" Fill="{DynamicResource SelectedModel_ListBoxItem_BorderBrush}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Stroke="{DynamicResource SelectedModel_ListBoxItem_BorderBrush}" StrokeThickness="2,0"/>
+            <Rectangle x:Name="PressOverlay" Fill="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}" Opacity="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <ContentPresenter x:Name="Content" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.1" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="PressOverlay">
+                                <SplineDoubleKeyFrame KeyTime="0:0:0.15" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+                <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Fill" TargetName="ButtonBody" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey TypeInTargetAssembly={x:Type Custom:SurfaceColors}}}"/>
+                <Setter Property="Opacity" TargetName="Content" Value="0.33"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+    <Style x:Key="HideShowButtonStyle"
+		TargetType="{x:Type Custom:SurfaceButton}" 
+		BasedOn="{StaticResource ControlBaseStyle}">
+        <Setter Property="MinWidth" Value="{Binding Content.MinWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MinHeight" Value="{Binding Content.MinHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxWidth" Value="{Binding Content.MaxWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="MaxHeight" Value="{Binding Content.MaxHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Width" Value="{Binding Content.Width, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Height" Value="{Binding Content.Height, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+		<Setter Property="IsTabStop"
+			Value="False" />
+		<Setter Property="Focusable"
+			Value="True" />
+		<Setter Property="Background"
+			Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundBrushKey}}" />
+		<Setter Property="Foreground"
+			Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonForegroundBrushKey}}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Custom:SurfaceButton}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="Press">
+							<DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+								Storyboard.TargetName="PressOverlay"
+								Storyboard.TargetProperty="(UIElement.Opacity)">
+								<SplineDoubleKeyFrame KeyTime="00:00:00.1000000"
+									Value="1" />
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+						<Storyboard x:Key="Release">
+							<DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+								Storyboard.TargetName="PressOverlay"
+								Storyboard.TargetProperty="(UIElement.Opacity)">
+								<SplineDoubleKeyFrame KeyTime="00:00:00.1500000"
+									Value="0" />
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Grid x:Name="Grid"
+						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+						<Rectangle  x:Name="ButtonBody"
+							Fill ="{TemplateBinding Background}"
+							SnapsToDevicePixels ="{TemplateBinding SnapsToDevicePixels}"/>
+						<Rectangle  x:Name="PressOverlay"
+							Opacity="0"
+							Fill ="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundPressedBrushKey}}" 							             
+							SnapsToDevicePixels ="{TemplateBinding SnapsToDevicePixels}"/>
+						<ContentPresenter  x:Name="Content"
+							Margin="{TemplateBinding Padding}"  
+							HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"		                                                                           
+							VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+							SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+					</Grid>
+
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsPressed"
+							Value="True">
+							<Trigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource Press}" />
+							</Trigger.EnterActions>
+							<Trigger.ExitActions>
+								<BeginStoryboard Storyboard="{StaticResource Release}" />
+							</Trigger.ExitActions>
+							<Setter Property="Foreground"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonForegroundPressedBrushKey}}"/>
+						</Trigger>
+						<Trigger Property="IsEnabled"
+							Value="False">
+							<Setter Property="Fill"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonBackgroundDisabledBrushKey}}"
+								TargetName="ButtonBody" />
+							<Setter Property="Foreground"
+								Value="{DynamicResource {x:Static Custom:SurfaceColors.ButtonForegroundDisabledBrushKey}}"/>
+							<Setter Property="Opacity"
+								Value="0.33"
+								TargetName="Content" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+    <Style x:Key="ToggleButton" TargetType="{x:Type Custom:SurfaceButton}">
+        <Setter Property="Grid.Column"
+			Value="2"/>
+        <Setter Property="Background"
+			Value="{DynamicResource MiniBrush}"/>
+        <Setter Property="MinHeight"
+			Value="25"/>
+        <Setter Property="Height"
+			Value="25"/>
+        <Setter Property="Margin"
+			Value="220,0,0,0"/>
+        <Setter Property="BorderThickness"
+			Value="0" />
+		<Setter Property="Padding"
+			Value="0" />
+        <Setter Property="HorizontalAlignment"
+			Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+			Value="Center" />
+    </Style>
+
+</ResourceDictionary>

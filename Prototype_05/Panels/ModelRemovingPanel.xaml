@@ -1,0 +1,301 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    xmlns:local="clr-namespace:Prototype_05"
+	x:Class="Prototype_05.ModelRemovingPanel"
+	x:Name="UserControl"
+	Width="420" Height="582">
+	
+
+	<Grid x:Name="MainGrid" Background="#FF1E311C" PreviewTouchDown="OptionTouchDown" PreviewTouchMove="OptionTouchMove" PreviewTouchUp="OptionTouchUp">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="46"/>
+			<RowDefinition Height="45"/>
+			<RowDefinition/>
+			<RowDefinition Height="120"/>
+		</Grid.RowDefinitions>
+			
+		<TextBox x:Name="TitleHeader" Grid.Row="0" Text="Remove Process Models" Grid.ColumnSpan="5" Margin="0,0,0,0"
+			Background="#FF121D11" Padding="10,1,1,1" FontSize="13" Style="{DynamicResource Item_TextBoxHeader_Name}" />
+		
+		<Grid x:Name="MarkingButtonGrid" Grid.Row="1" >
+		
+			<TextBox Text="Select" FontSize="11" Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" Margin="275,15,0,0" />	
+			<s:SurfaceButton Height="30" Width="40" Padding="0" Margin="316,0,0,0" HorizontalAlignment="Left"
+				VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+				Template="{DynamicResource RemoveMarkingButtonControlTemplate}" VerticalAlignment="Bottom" MinHeight="30">
+				<s:SurfaceButton.Background>
+					<SolidColorBrush Color="#FF415244"/>
+				</s:SurfaceButton.Background>				
+				<TextBox Grid.Row="1" Text="all" FontSize="12" Style="{DynamicResource TextBox_Simple}" />				
+			</s:SurfaceButton>
+		
+			<s:SurfaceButton Height="30" Width="55" Padding="0" Margin="355,0,0,0" HorizontalAlignment="Left"
+				VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+				Template="{DynamicResource RemoveMarkingButtonControlTemplate}" VerticalAlignment="Bottom" MinHeight="30">
+				<s:SurfaceButton.Background>
+					<SolidColorBrush Color="#FF415244"/>
+				</s:SurfaceButton.Background>				
+				<TextBox Grid.Row="1" Text="none" FontSize="12" Style="{DynamicResource TextBox_Simple}" />				
+			</s:SurfaceButton>
+			
+		</Grid>
+		
+		
+		<Grid x:Name="ModelsGrid" Grid.Row="2" Width="400" Margin="0,10,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="500"/>
+        </Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="170" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+        <TextBox Grid.Row="1" Grid.Column="0" Text="Categories" Margin="17,0,0,0" VerticalContentAlignment="Center" VerticalAlignment="Center"
+			Padding="0" FontSize="12" Style="{DynamicResource TextBox_Simple}" />
+
+        <Grid x:Name="CategoryGrid" Grid.Row="2" Width="170" Height="200" VerticalAlignment="Top"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+			
+			<Rectangle x:Name="Category0Rect" Grid.Row="0" Style="{DynamicResource Category_Rectangle}" >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource Category0ColorFadeNEW}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="Category1Rect" Grid.Row="1" Width="170" Style="{DynamicResource Category_Rectangle}" >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource Category1ColorStrongNEW}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="Category2Rect" Grid.Row="2" Style="{DynamicResource Category_Rectangle}"  >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource Category2ColorFadeNEW}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="Category3Rect" Grid.Row="3" Style="{DynamicResource Category_Rectangle}"  >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource Category3ColorFadeNEW}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="Category4Rect" Grid.Row="4" Style="{DynamicResource Category_Rectangle}"  >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource Category4ColorFadeNEW}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+
+			<Image x:Name="Category0Image" Grid.Row="0" Source="../Images/wherz.png" Style="{DynamicResource Category_Image}" />
+			<Image x:Name="Category1Image" Grid.Row="1" Source="../Images/wschloss.png"  Margin="8,4,0,0" Style="{DynamicResource Category_Image}" />
+			<Image x:Name="Category2Image" Width="20" Height="20" Grid.Row="2" Source="../Images/wbesenbesser.png" Style="{DynamicResource Category_Image}" />
+			<Image x:Name="Category3Image" Width="20" Height="20" Grid.Row="3" Source="../Images/wstuhl.png" Style="{DynamicResource Category_Image}" />
+			<Image x:Name="Category4Image" Width="20" Height="20" Grid.Row="4" Source="../Images/wmusik.png" Style="{DynamicResource Category_Image}" />
+            <TextBox x:Name="Category0Text" Grid.Row="0" Text="Favourites" Style="{DynamicResource TextBox_CategoryTitle}" />
+            <TextBox x:Name="Category1Text" Grid.Row="1" Text="Safety" Margin="27,0,0,10"  Style="{DynamicResource TextBox_CategoryTitle}" />
+            <TextBox x:Name="Category2Text" Grid.Row="2" Text="Housekeeping" Style="{DynamicResource TextBox_CategoryTitle}" />
+            <TextBox x:Name="Category3Text" Grid.Row="3" Text="Convenience" Style="{DynamicResource TextBox_CategoryTitle}" />
+            <TextBox x:Name="Category4Text" Grid.Row="4" Text="Entertainment" Style="{DynamicResource TextBox_CategoryTitle}" />
+            <TextBlock x:Name="Category0AmountTextB" Grid.Row="0" Style="{DynamicResource TextBlock_CategoryAmount}">
+            	0 <Run FontSize="10" FontWeight="Normal">/ 5</Run>
+            </TextBlock>
+            <TextBlock x:Name="Category1AmountTextB" Grid.Row="1" Style="{DynamicResource TextBlock_CategoryAmount}">
+            	2 <Run FontSize="10" FontWeight="Normal">/ 6</Run>
+            </TextBlock>
+            <TextBlock x:Name="Category2AmountTextB" Grid.Row="2" Style="{DynamicResource TextBlock_CategoryAmount}">
+            	0 <Run FontSize="10" FontWeight="Normal">/ 7</Run>
+            </TextBlock>
+            <TextBlock x:Name="Category3AmountTextB" Grid.Row="3" Style="{DynamicResource TextBlock_CategoryAmount}">
+            	1 <Run FontSize="10" FontWeight="Normal">/ 9</Run>
+            </TextBlock>
+            <TextBlock x:Name="Category4AmountTextB" Grid.Row="4" Style="{DynamicResource TextBlock_CategoryAmount}">
+            	0 <Run FontSize="10" FontWeight="Normal">/ 5</Run>
+            </TextBlock>
+           <!-- <TextBox x:Name="Category1AmountText" Grid.Row="1" Text="2/11" Style="{DynamicResource TextBox_CategoryAmount}" />
+            <TextBox x:Name="Category2AmountText" Grid.Row="2" Text="0/7" Style="{DynamicResource TextBox_CategoryAmount}" />
+            <TextBox x:Name="Category3AmountText" Grid.Row="3" Text="1/9" Style="{DynamicResource TextBox_CategoryAmount}" />
+            <TextBox x:Name="Category4AmountText" Grid.Row="4" Text="0/3" Style="{DynamicResource TextBox_CategoryAmount}" />
+				<GradientStop Color="#FF387C32"/>
+                    <GradientStop Color="#00387C32" Offset="0.9"/>
+					-->
+
+        </Grid>
+		
+		<Rectangle x:Name="BackgroundRectangleHeader" Grid.Row="1" Grid.Column="1">
+			<Rectangle.Fill>				
+				    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF387C32"/>
+                    <GradientStop Color="#00387C32" Offset="0.9"/>
+				    </LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+		<Rectangle x:Name="BackgroundRectangleListBox" Grid.Row="2" Grid.Column="1">
+			<Rectangle.Fill>
+				<SolidColorBrush Color="#00387C32"/>
+			</Rectangle.Fill>
+		</Rectangle>
+		
+		<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Background="{x:Null}">
+            <Label     x:Name="NameLabel"
+	                   Content="Model Name" 
+	                   VerticalContentAlignment="Center"
+	                   VerticalAlignment="Center"
+	                   Margin="20, 0, 0, 0" 
+	                   FontSize="12"
+					   Width="160"
+                       Foreground="White"/>
+
+            <!--   TextWrapping="Wrap"
+					   Style="{StaticResource TextBox_SimpleBlack}" -->
+
+            <TextBox   x:Name="RemoveLabel"
+	                   Text="Remove It" 
+	                   VerticalContentAlignment="Center"
+	                   VerticalAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Padding="0"
+	                   FontSize="12" TextWrapping="Wrap"
+					   Width="50"
+                       Foreground="White" Style="{DynamicResource TextBox_Simple}" />
+        </StackPanel>
+		
+        <s:SurfaceListBox x:Name="Cat1ListBox" Grid.Row="2" Grid.Column="1"
+				Style="{StaticResource SurfaceListBox}"
+				Template="{DynamicResource SListBoxControlTempl_BG_Transp}" IsHitTestVisible="False"
+                >	
+        	<s:SurfaceListBoxItem x:Name="removeitem" Margin="5,0,5,3" Style="{DynamicResource RemoveItemStyle}">
+		        <Canvas x:Name="Stackmodel" Width="220" Height="42">
+		            <Image Source="../Images/geschmiere.png" Width="220" Height="42" Stretch="UniformToFill" />
+		            <TextBox Text="Process Model Name"
+					           VerticalContentAlignment="Center" TextDecorations="Underline"
+					           Margin="0, 0, 0, 0" Padding="5,5,50,5" TextWrapping="Wrap"
+					           FontSize="12" 
+							   Style="{DynamicResource TextBox_SimpleBlack}" Width="{Binding Width, ElementName=Stackmodel}" Height="42" BorderBrush="Black" BorderThickness="1" />
+					<Line Stroke="Black" X1="182" X2="182" Y2="42" />
+		            <Image Source="../Images/wloeschselect.png" Width="20" Height="20" Margin="191,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />	
+		        </Canvas>
+		</s:SurfaceListBoxItem>
+        	<s:SurfaceListBoxItem x:Name="removeitem2" Style="{DynamicResource RemoveItemStyle}">
+		        <Canvas Width="220" Height="42" Background="#FFCECECE">
+		            <TextBox Text="Some long Process Model Name"
+					           VerticalContentAlignment="Center" TextDecorations="Underline"
+					           Margin="0, 0, 0, 0" Padding="5,5,50,5" TextWrapping="Wrap"
+					           FontSize="12" 
+							   Style="{DynamicResource TextBox_SimpleBlack}" Width="{Binding Width, ElementName=Stackmodel}" Height="42" BorderBrush="Black" BorderThickness="1" />
+					<Line Stroke="Black" X1="182" X2="182" Y2="42" />
+		            <Image Source="../Images/wselect2.png" Width="20" Height="20" Margin="191,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />	
+		        </Canvas>
+		</s:SurfaceListBoxItem>
+        	<s:SurfaceListBoxItem x:Name="removeitem3" Style="{DynamicResource RemoveItemStyle}">
+		        <Canvas Width="220" Height="42" Background="#FFCECECE">
+		            <TextBox Text="Process Model Name"
+					           VerticalContentAlignment="Center" TextDecorations="Underline"
+					           Margin="0, 0, 0, 0" Padding="5,5,50,5" TextWrapping="Wrap"
+					           FontSize="12" 
+							   Style="{DynamicResource TextBox_SimpleBlack}" Width="{Binding Width, ElementName=Stackmodel}" Height="42" BorderBrush="Black" BorderThickness="1" />
+					<Line Stroke="Black" X1="182" X2="182" Y2="42" />
+		            <Image Source="../Images/wselect2.png" Width="20" Height="20" Margin="191,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />	
+		        </Canvas>
+		</s:SurfaceListBoxItem>
+        	<s:SurfaceListBoxItem x:Name="removeitem4" Style="{DynamicResource RemoveItemStyle}">
+		        <Canvas Width="220" Height="42">
+		            <Image Source="../Images/geschmiere.png" Width="220" Height="42" Stretch="UniformToFill" />
+		            <TextBox Text="Some very long Process Model Name"
+					           VerticalContentAlignment="Center" TextDecorations="Underline"
+					           Margin="0, 0, 0, 0" Padding="5,5,50,5" TextWrapping="Wrap"
+					           FontSize="12" 
+							   Style="{DynamicResource TextBox_SimpleBlack}" Width="{Binding Width, ElementName=Stackmodel}" Height="42" BorderBrush="Black" BorderThickness="1" />
+					<Line Stroke="Black" X1="182" X2="182" Y2="42" />
+		            <Image Source="../Images/wloeschselect.png" Width="20" Height="20" Margin="191,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />	
+		        </Canvas>
+		</s:SurfaceListBoxItem>
+        	<s:SurfaceListBoxItem x:Name="removeitem5" Style="{DynamicResource RemoveItemStyle}">
+		        <Canvas Width="220" Height="42" Background="#FFCECECE">
+		            <TextBox Text="Process M Name"
+					           VerticalContentAlignment="Center" TextDecorations="Underline"
+					           Margin="0, 0, 0, 0" Padding="5,5,50,5" TextWrapping="Wrap"
+					           FontSize="12" 
+							   Style="{DynamicResource TextBox_SimpleBlack}" Width="{Binding Width, ElementName=Stackmodel}" Height="42" BorderBrush="Black" BorderThickness="1" />
+					<Line Stroke="Black" X1="182" X2="182" Y2="42" />
+		            <Image Source="../Images/wselect2.png" Width="20" Height="20" Margin="191,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />	
+		        </Canvas>
+		</s:SurfaceListBoxItem>
+        	<s:SurfaceListBoxItem x:Name="removeitem6" Style="{DynamicResource RemoveItemStyle}">
+		        <Canvas Width="220" Height="42" Background="#FFCECECE">
+		            <TextBox Text="Another Process Model Name"
+					           VerticalContentAlignment="Center" TextDecorations="Underline"
+					           Margin="0, 0, 0, 0" Padding="5,5,50,5" TextWrapping="Wrap"
+					           FontSize="12" 
+							   Style="{DynamicResource TextBox_SimpleBlack}" Width="{Binding Width, ElementName=Stackmodel}" Height="42" BorderBrush="Black" BorderThickness="1" />
+					<Line Stroke="Black" X1="182" X2="182" Y2="42" />
+		            <Image Source="../Images/wselect2.png" Width="20" Height="20" Margin="191,11,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />	
+		        </Canvas>
+		</s:SurfaceListBoxItem>
+        </s:SurfaceListBox>
+		
+            <Path x:Name="Border" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" StrokeThickness="3" Stroke="Gray">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigureCollection>
+                                <PathFigure x:Name="BorderPoint0" IsClosed="True" StartPoint="0,0">
+                                    <PathFigure.Segments>
+                                        <PathSegmentCollection>
+                                            <LineSegment x:Name="BorderPoint1" Point="0,328" />
+                                            <LineSegment x:Name="BorderPoint2" Point="230,328" />
+                                            <LineSegment x:Name="BorderPoint3" Point="230,0" />
+                                        </PathSegmentCollection>
+                                    </PathFigure.Segments>
+                                </PathFigure>
+                            </PathFigureCollection>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+    </Grid>
+	
+	<Grid x:Name="ApproveGrid" Grid.Row="3" Width="340" HorizontalAlignment="Center">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="150"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+			<TextBox x:Name="OkText" Grid.Row="0" Grid.Column="0" Text="Remove 3 Models" FontSize="12" Margin="10,0,0,0"
+			Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Width="120" TextWrapping="Wrap" Padding="0" VerticalContentAlignment="Center"/>
+			<TextBox x:Name="CancelText" Grid.Row="0" Grid.Column="1" Text="Cancel: no Model gets removed" FontSize="12" Margin="10,0,0,0"
+			Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Width="120"/>
+			<!--
+			<TextBox x:Name="Description" Grid.Row="2" Grid.ColumnSpan="3" Text="... this instance" FontSize="13" Margin="20,0,0,0" Height="26"
+			Style="{DynamicResource TextBox_Simple}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+			-->
+			<Rectangle x:Name="OkRectangle" Grid.Column="0" Style="{DynamicResource InstanceOption_Rectangle}" Width="110" />
+			<Image Grid.Column="0" Style="{DynamicResource InstanceDirection_Image}" HorizontalAlignment="Left" Margin="76,19,10,0" />
+			<s:SurfaceButton x:Name="OkButton" Grid.Column="0" Style="{DynamicResource InstanceOption_Button}" Template="{DynamicResource OptionsButtonControlTemplate}">
+                    <Image x:Name="PausePlayImage" Source="../Images/ok_green.png" Style="{DynamicResource InstanceOption_Image}" />					
+			</s:SurfaceButton>	
+			
+			<Rectangle x:Name="CancelRectangle" Grid.Column="1" Style="{DynamicResource InstanceOption_Rectangle}" Width="110" />
+			<Image Grid.Column="1" Style="{DynamicResource InstanceDirection_Image}" HorizontalAlignment="Left" Margin="76,19,10,0" />
+            <s:SurfaceButton x:Name="CancelButton" Grid.Column="1" Style="{DynamicResource InstanceOption_Button}" Template="{DynamicResource OptionsButtonControlTemplate}">
+                <Image Source="../Images/cancel_red2.png" Style="{DynamicResource InstanceOption_Image}" Width="30" Height="30" />					
+			</s:SurfaceButton>	
+		</Grid>
+		
+	</Grid>
+</UserControl>

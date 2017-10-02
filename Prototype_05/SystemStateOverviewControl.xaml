@@ -1,0 +1,145 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Prototype_05.SystemStateOverviewControl"
+    xmlns:local="clr-namespace:Prototype_05" 
+	x:Name="UserControl"
+	Width="645" Height="302"
+    Loaded="ContentLoaded">
+
+	<Grid x:Name="MainGrid">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="155"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100"/>
+			<RowDefinition Height="12"/>
+			<RowDefinition/>
+			<RowDefinition Height="52"/>
+		</Grid.RowDefinitions>
+		
+			
+		
+        <Grid x:Name="NavigationGrid" Grid.Row="2" Grid.Column="0" Width="100" Height="80" VerticalAlignment="Top" >
+                <!--PreviewTouchDown="NavigationTouchDown" PreviewTouchMove="NavigationTouchMove" PreviewTouchUp="NavigationTouchUp" >-->
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+			
+			<Rectangle x:Name="LastActions" Grid.Row="0" Style="{DynamicResource InstanceNavigation_Rectangle}" Width="100" >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource HistoryNavigationColorStrong0}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="ErrorRect" Grid.Row="1" Width="85" Margin="0,-1,-1,0" Style="{DynamicResource InstanceNavigation_Rectangle}" >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource HistoryNavigationColorFade1}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+
+            <TextBox x:Name="LastActionsText" Grid.Row="0" Text="Last Actions" Margin="5,0,0,10" Style="{DynamicResource TextBox_InstanceNavigationTitle}" />
+            <TextBox x:Name="ErrorText" Grid.Row="1" Text="Errors (-)" Style="{DynamicResource TextBox_InstanceNavigationTitle}" />
+
+        </Grid>
+		
+		<Grid x:Name="SystemFactsGrid" Grid.Row="0" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.07*"/>
+				<ColumnDefinition Width="0.23*"/>
+				<ColumnDefinition Width="0.2*"/>
+				<ColumnDefinition Width="0.25*"/>
+			</Grid.ColumnDefinitions>
+			
+			<TextBox x:Name="RunningInstancesAmountTitle" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Running Instances" Style="{DynamicResource SystemFactsTitleTextBoxStyle}" />
+			<TextBox x:Name="ExecutingInstancesAmountTitle" Grid.Row="1" Grid.Column="1" Text="executing" Style="{DynamicResource SystemFactsTitleTextBoxStyle}" />
+			<TextBox x:Name="PausedInstancesAmountTitle" Grid.Row="2" Grid.Column="1" Text="paused / waiting" Style="{DynamicResource SystemFactsTitleTextBoxStyle}" />
+			<TextBox x:Name="FaultyInstancesAmountTitle" Grid.Row="3" Grid.Column="1" Text="faulty" Style="{DynamicResource SystemFactsTitleTextBoxStyle}" />
+			
+			<TextBox x:Name="RunningInstancesAmount" Grid.Row="0" Text="11" Style="{DynamicResource SystemFactsAmountTextBoxStyle}" />
+			<TextBox x:Name="ExecutingInstancesAmount" Grid.Row="1" Text="9" Style="{DynamicResource SystemFactsAmountTextBoxStyle}" />
+			<TextBox x:Name="PausedInstancesAmount" Grid.Row="2" Text="2" Style="{DynamicResource SystemFactsAmountTextBoxStyle}" />
+			<TextBox x:Name="FaultyInstancesAmount" Grid.Row="3" Text="0" HorizontalAlignment="Left" Style="{DynamicResource SystemFactsAmountTextBoxStyle}" />
+			
+			<Line X1="20" Y1="25" X2="20" Y2="89.5" Style="{DynamicResource SystemFacts_ModelLine}" />
+			<Line X1="20" Y1="37.5" X2="36" Y2="37.5" Style="{DynamicResource SystemFacts_ModelLine}" />
+			<Line X1="20" Y1="62.5" X2="36" Y2="62.5" Style="{DynamicResource SystemFacts_ModelLine}" />
+			<Line X1="20" Y1="89.5" X2="36" Y2="89.5" Style="{DynamicResource SystemFacts_ModelLine}" />
+			
+			<TextBox x:Name="TimeValue" Grid.Row="1" Grid.Column="3" Text="12:35" Width="100" Style="{DynamicResource SystemFactsAmountTextBoxStyle}" HorizontalAlignment="Right" />
+			<TextBox x:Name="DateValue" Grid.Row="0" Grid.Column="3" Text="Thu, 27th June 2013" Width="Auto" Style="{DynamicResource SystemFactsAmountTextBoxStyle}" HorizontalAlignment="Right" />
+		</Grid>
+		
+		
+			<Rectangle x:Name="MessageRectangle0" Grid.Row="2" Grid.Column="1" Stroke="Gainsboro" Height="46" VerticalAlignment="Top" Fill="{DynamicResource LogStripLight_Brush}"/>
+			<Rectangle x:Name="MessageRectangle1" Grid.Row="2" Grid.Column="1"  Stroke="Gainsboro" Height="46" VerticalAlignment="Center" Fill="{DynamicResource LogStripDark_Brush}"/>
+			<Rectangle x:Name="MessageRectangle2" Grid.Row="2" Grid.Column="1" Stroke="Gainsboro" Height="46" VerticalAlignment="Bottom" Fill="{DynamicResource LogStripLight_Brush}"/>
+		
+		<Grid x:Name="LogGrid" Grid.Row="2" Grid.Column="1" Height="138" Width="390" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Visible">
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="50"/>
+				<ColumnDefinition />
+				<ColumnDefinition Width="75"/>
+			</Grid.ColumnDefinitions>
+			
+				<TextBox x:Name="LogTime0" Grid.Row="0" Grid.Column="0" Text="11:47" TextAlignment="Center" Style="{DynamicResource LogTextBoxStyle}" />
+				<TextBox x:Name="LogType0" Grid.Row="0" Grid.Column="1" Text="Finished" Style="{DynamicResource LogTextBoxStyle}" />
+				<TextBox x:Name="LogProcess0" Grid.Row="0" Grid.Column="1" Text="Bring today's Mail to Living Room" Style="{DynamicResource LogTextBoxStyle}" VerticalAlignment="Bottom" Margin="0,0,0,5" />
+				<TextBox x:Name="LogTime1" Grid.Row="1" Grid.Column="0" Text="11:44" TextAlignment="Center" Style="{DynamicResource LogTextBoxStyle}" />
+				<TextBox x:Name="LogType1" Grid.Row="1" Grid.Column="1" Text="Started" Style="{DynamicResource LogTextBoxStyle}" />
+				<TextBox x:Name="LogProcess1" Grid.Row="1" Grid.Column="1" Text="Simulate Presence" Style="{DynamicResource LogTextBoxStyle}" VerticalAlignment="Bottom" Margin="0,0,0,5" />
+				<TextBox x:Name="LogTime2" Grid.Row="2" Grid.Column="0" Text="11.42" TextAlignment="Center" Style="{DynamicResource LogTextBoxStyle}" />
+				<TextBox x:Name="LogType2" Grid.Row="2" Grid.Column="1" Text="Started" Style="{DynamicResource LogTextBoxStyle}" />
+				<TextBox x:Name="LogProcess2" Grid.Row="2" Grid.Column="1" Text="Bring today's Mail to Living Room" Style="{DynamicResource LogTextBoxStyle}" VerticalAlignment="Bottom" Margin="0,0,0,5" />
+			
+		</Grid>	
+			<!--
+			</Grid>	
+			<local:ProcessModelMenu x:Name="NoteModelMenu" Grid.RowSpan="3" Grid.Column="1" Visibility="Hidden"/>  Background="#FF414141" "Wash all the dirty clothes" "Phone my daughter Patricia McNeal"
+			
+			-->		
+			<Grid x:Name="ErrorGrid" Grid.Row="2" Grid.Column="1" Height="138" Width="390" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden">
+				<Grid x:Name="ErrorMessageGrid" Grid.Row="1" Grid.Column="1" Height="138" Width="375" HorizontalAlignment="Left" VerticalAlignment="Top" >
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="50"/>
+						<ColumnDefinition Width="325" />
+					</Grid.ColumnDefinitions>
+					
+					<TextBox x:Name="ErrorTime0" Grid.Row="0" Grid.Column="0" Text="11.01" TextAlignment="Center" Style="{DynamicResource LogTextBoxStyle}" />
+					<TextBox x:Name="ErrorType0" Grid.Row="0" Grid.Column="1" Text="Routing Error" Style="{DynamicResource LogTextBoxStyle}" />
+					<TextBox x:Name="ErrorProcess0" Grid.Row="0" Grid.Column="1" Text="Bring post" Style="{DynamicResource LogTextBoxStyle}" VerticalAlignment="Bottom" Margin="0,0,0,5" />
+					
+				</Grid>
+				
+			<TextBox x:Name="OKMessage" Text="System is working properly" FontSize="13" Style="{DynamicResource TextBox_Simple}" Visibility="Hidden"
+				HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" Margin="0,0,0,20" TextAlignment="Center"/>
+			<TextBox x:Name="OKMessage2" Text="Currently no errors detected" FontSize="13" Style="{DynamicResource TextBox_Simple}" Visibility="Hidden"
+				HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" TextAlignment="Center" Margin="0,20,0,0"/>
+				
+				
+			</Grid>	
+			
+		
+	</Grid>
+</UserControl>

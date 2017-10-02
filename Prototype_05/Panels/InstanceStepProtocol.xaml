@@ -1,0 +1,44 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Prototype_05.InstanceStepProtocol"
+	x:Name="UserControl"
+	Height="180" Width="204">
+
+	<Grid x:Name="MainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="35"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Rectangle Grid.RowSpan="2" Stroke="White" StrokeThickness="1" RadiusX="10" RadiusY="10" Fill="#FF645A52"/>
+		<TextBox x:Name="StepNameText" FontSize="12" Text="Current Step Name" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource TextBox_Simple}" Margin="5,0,0,0" />
+		<Grid x:Name="HistoryDataGrid" Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.55*"/>
+				<ColumnDefinition Width="0.45*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition Height="2*"/>
+				<RowDefinition Height="0.5*"/>
+			</Grid.RowDefinitions>
+			<TextBox Style="{DynamicResource Item_TextBoxData_AttributeLeft}" Text="Start Time" Grid.Row="0" Margin="5,0,0,0"/>
+			<TextBox x:Name="StartTimeText" Style="{DynamicResource Item_TextBoxData_ValueLeft}" Text="12.13" Grid.Row="1" Margin="5,0,5,0"/>
+			<TextBox Grid.Row="0" Grid.Column="1" Text="End Time" Margin="5,0,5,0" Style="{DynamicResource Item_TextBoxData_AttributeLeft}"/>
+            <TextBox x:Name="EndTimeText" Grid.Row="1" Grid.Column="1" Text="-" Margin="5,0,5,0" Style="{DynamicResource Item_TextBoxData_ValueLeft}" />
+			<TextBox Style="{DynamicResource Item_TextBoxData_AttributeLeft}" Text="Responsible Device" Grid.Row="2" Grid.ColumnSpan="2" Margin="5,0,5,0"/>
+            <TextBox x:Name="DeviceText" Style="{DynamicResource Item_TextBoxData_ValueLeft}" Text="Device XY" Grid.Row="3" Grid.ColumnSpan="2" Margin="5,0,5,0"/>
+			<TextBox x:Name="ParameterTitleText" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" Text="Parameter" Grid.Row="4" Margin="5,0,5,0"/>
+            <TextBox x:Name="Parameter1Text" Style="{DynamicResource Item_TextBoxData_ValueLeft}" Text="> Parameter Name" Grid.Row="5" Grid.RowSpan="2" TextWrapping="Wrap" Margin="5,0,5,0"/>
+			<TextBox x:Name="ValueTitleText" Style="{DynamicResource Item_TextBoxData_AttributeLeft}" Text="Value" Grid.Row="4" Grid.Column="1" Margin="5,0,5,0"/>
+            <TextBox x:Name="Value1Text" Style="{DynamicResource Item_TextBoxData_ValueLeft}" Text="Assigned Value" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" TextWrapping="Wrap" Margin="5,0,5,0"/>
+		</Grid>
+	</Grid>
+</UserControl>

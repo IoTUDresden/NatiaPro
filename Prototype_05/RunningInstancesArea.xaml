@@ -1,0 +1,98 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    xmlns:local="clr-namespace:Prototype_05"
+	x:Class="Prototype_05.RunningInstancesArea"
+	x:Name="UserControl"
+	Width="1090" Height="930"
+    Loaded="AreaLoaded">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="910"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1050"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Path StrokeThickness="2" Grid.Row="1" Grid.Column="0">
+            <Path.Fill>
+                <SolidColorBrush Color="{DynamicResource InstanceColorFade0}"/>
+            </Path.Fill>
+            <Path.Stroke>
+                <SolidColorBrush Color="{DynamicResource InstanceColor0}"/>
+            </Path.Stroke>
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure StartPoint="40,690" IsClosed="False">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <LineSegment Point="0,710" />
+                                        <LineSegment Point="0,910" />
+                                        <LineSegment Point="40,910" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <Image x:Name="ShowOrHideImage" Grid.Row="1" Grid.Column="0" Source="Images/showinstances.png" VerticalAlignment="Bottom" Width="20" Height="20" Margin="0,0,0,172" RenderTransformOrigin="0.5,0.5" />
+
+        <TextBox x:Name="ShowOrHideText" Grid.Row="1" Grid.Column="0" Text="Hide Running Instances" FontSize="14" Style="{DynamicResource TextBox_Simple}"
+			Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="1" Width="200" RenderTransformOrigin="0.5,0.5" >
+            <TextBox.Foreground>
+                <SolidColorBrush Color="{DynamicResource InstanceColor0}"/>
+            </TextBox.Foreground>
+
+            <TextBox.LayoutTransform>
+                <RotateTransform Angle="-90"/>
+            </TextBox.LayoutTransform>
+        </TextBox>
+		
+
+        <Path StrokeThickness="4" Grid.Row="1" Grid.Column="1" Fill="#22FFFFFF">
+            <Path.Stroke>
+                <SolidColorBrush Color="{DynamicResource InstanceColor0}"/>
+            </Path.Stroke>
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure StartPoint="135,0" IsClosed="False">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <LineSegment Point="0,0" />
+                                        <LineSegment Point="0,910" />
+                                        <LineSegment Point="1050,910" />
+                                        <LineSegment Point="1050,0" />
+                                        <LineSegment Point="335,0" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <TextBox Grid.RowSpan="2" Grid.Column="1" Text="Running Instances" FontSize="20" Style="{DynamicResource TextBox_Simple}"
+			Margin="135,-3,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="1" Width="200" TextAlignment="Center" >
+
+        </TextBox>
+
+		<s:SurfaceButton x:Name="ShowHideButton" Grid.Row="1" Grid.Column="0" Height="220" Width="40" BorderThickness="0" Padding="0" VerticalAlignment="Bottom"
+			Background="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource HideShowButtonStyle}" PreviewTouchDown="ShowHideTouchDown" PreviewTouchUp="ShowHideTouchUp"
+			/>
+    </Grid>
+</UserControl>

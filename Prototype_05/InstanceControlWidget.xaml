@@ -1,0 +1,159 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+	x:Class="Prototype_05.InstanceControlWidget"
+	x:Name="UserControl"
+	Width="425" Height="315"> <!-- 315 -->
+
+	<Grid x:Name="MainGrid">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0"/>
+			<RowDefinition Height="46"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+
+        <Grid x:Name="NavigationGrid" Grid.Row="1" Grid.RowSpan="2" Width="100" Height="80" VerticalAlignment="Top" 
+                PreviewTouchDown="NavigationTouchDown" PreviewTouchMove="NavigationTouchMove" PreviewTouchUp="NavigationTouchUp" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+			
+			<Rectangle x:Name="InstanceRect" Grid.Row="0" Width="100" Style="{DynamicResource InstanceNavigation_Rectangle}" >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="#FFAF7648"/>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="AllRect" Grid.Row="1" Margin="0,-1,0,0" Style="{DynamicResource InstanceNavigation_Rectangle}" >
+				<Rectangle.Fill>
+					<SolidColorBrush Color="{DynamicResource InstanceColorFade1}"/>
+				</Rectangle.Fill>
+			</Rectangle>
+
+            <TextBox x:Name="InstanceText" Grid.Row="0" Text="Instance 7" Margin="5,0,0,10" Style="{DynamicResource TextBox_InstanceNavigationTitle}" />
+            <TextBox x:Name="AllText" Grid.Row="1" Text="All Instances" Style="{DynamicResource TextBox_InstanceNavigationTitle}" />
+
+        </Grid>
+		
+		<Rectangle Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Stroke="Gainsboro" >
+			<Rectangle.Fill>
+				<SolidColorBrush Color="{DynamicResource InstanceDetailBackgroundColor}"/>
+			</Rectangle.Fill>
+		</Rectangle>
+		<Rectangle Grid.Row="1" Grid.Column="1" Fill="#FF2F1D0E" Stroke="Gainsboro" />
+		
+		<Grid x:Name="HeaderGrid" Grid.Row="1" Grid.Column="1">
+			<TextBox Grid.Row="0" Text="State" Foreground="White" Grid.Column="2" Style="{DynamicResource Item_TextBoxData_AttributeRightBlack}" HorizontalAlignment="Right" VerticalContentAlignment="Center" Margin="5,-15,15,0" />
+            <TextBox x:Name="StateText" Grid.Row="1" Text="executing" Grid.Column="2" Style="{DynamicResource Item_TextBoxData_ValueRightBlack}" HorizontalAlignment="Right" VerticalContentAlignment="Center" Margin="5,15,15,0" >
+            	<TextBox.Foreground>
+            		<SolidColorBrush Color="White"/>
+            	</TextBox.Foreground>
+            </TextBox>
+			<s:SurfaceButton MaxWidth="240" HorizontalAlignment="Left" Margin="10,0,0,0" Padding="0" BorderThickness="0" Background="{x:Null}" VerticalAlignment="Center" Click="InstanceNameClicked">
+				<TextBox x:Name="TitleText" Grid.Row="0" Text="Instancename - ID 7" FontSize="14" TextWrapping="Wrap" Height="40"
+				Style="{DynamicResource TextBox_Simple}" VerticalContentAlignment="Center" HorizontalAlignment="Left" TextDecorations="Underline"/>
+			</s:SurfaceButton>
+		</Grid>
+		
+		
+		<Grid x:Name="SolvingGrid" Grid.Row="2" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="0"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="30"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			
+          <!--  <TextBox Style="{DynamicResource Item_TextBox_Title}" Margin="1,0">
+            	<TextBox.Background>
+            		<SolidColorBrush Color="#FF1A1A1A"/>
+            	</TextBox.Background>
+                Possible Actions
+            </TextBox>-->
+			
+				<TextBox x:Name="ConfirmText" Grid.Row="2" Text="Confirm selected action:" Style="{DynamicResource ErrorControlOption}" Height="Auto" Margin="19,0,0,0" />		
+				<Rectangle x:Name="ConfirmRectangle" Grid.Row="3" Style="{DynamicResource InstanceOption_Rectangle}" Margin="31,16,0,0" Width="110" />
+				<Image Grid.Row="3" Style="{DynamicResource InstanceDirection_Image}" Margin="-129,19,10,0" />
+	            <s:SurfaceButton x:Name="ConfirmButton" Grid.Row="3" Style="{DynamicResource InstanceOption_Button}" Template="{DynamicResource OptionsButtonControlTemplate}"
+	                Width="38" Height="38" Margin="21,6,0,0" PreviewTouchDown="OptionTouchDown" PreviewTouchMove="OptionTouchMove" PreviewTouchUp="OptionTouchUp" >
+	                <Image x:Name="ConfirmMeasureImage" Source="Images/pause_black.png" Style="{DynamicResource InstanceOption_Image}" />					
+				</s:SurfaceButton>
+				<TextBox x:Name="ChosenMeasureText" Grid.Row="3" Text="Pause this instance" Style="{DynamicResource ErrorControlOption}" Height="Auto" Margin="21,-14,21,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" />		
+		
+		
+		
+			<Grid x:Name="SolvingInfoGrid" Height="Auto" Grid.Row="1" Margin="10,10,0,5">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="35"/>
+					<RowDefinition Height="124"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="40"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				
+				<TextBox x:Name="SelectText" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="11" Text="Select Action" Style="{DynamicResource ErrorControlOption}" Margin="11,7,0,0" VerticalAlignment="Top" Height="Auto" />
+				
+				
+				<Grid x:Name="SolveiGrid" Grid.Row="1" Grid.Column="1" Margin="0,3,0,0">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>					
+				
+					<Grid x:Name="Solve1Grid" Grid.Row="0" Grid.Column="1" Margin="0,0,0,5">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="30"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+						<Image Grid.Row="0" Source="Images/wnothing.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="DoNothingText" Grid.Row="0" Text="Don't change Instance's state" Style="{DynamicResource ErrorControlOption}" />
+					</Grid>		
+					
+					<Grid x:Name="Solve2Grid" Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition Height="0"/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="30"/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+						<Image x:Name="PausePlayImage" Grid.Row="0" Source="Images/play_white.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="PausePlayText" Grid.Row="0" Text="Play this instance" Style="{DynamicResource ErrorControlOption}" />
+						<Image x:Name="PauseImage" Grid.Row="1" Source="Images/pause_white.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="PauseText" Grid.Row="1" Text="Pause all instances" Style="{DynamicResource ErrorControlOption}" />
+						<Image Grid.Row="2" Source="Images/stop_white.png" Style="{DynamicResource ErrorMeasure_Image}" />
+						<TextBox x:Name="StopText" Grid.Row="2" Text="Stop this instance" Style="{DynamicResource ErrorControlOption}" />
+						<Image Grid.Row="3" Source="Images/wkill.png" Style="{DynamicResource ErrorMeasure_Image}" />	
+						<TextBox x:Name="KillText" Grid.Row="3" Text="Kill this instance" Style="{DynamicResource ErrorControlOption}" />		
+					</Grid>	
+				
+                
+				</Grid>
+				<s:SurfaceSlider x:Name="OptionSlider" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Maximum="49" IsSnapToTickEnabled="True"
+					Orientation="Vertical" Style="{DynamicResource InstanceControlSurfaceSliderStyle}" Value="49"
+					Ticks="0,14.5,29,49" Margin="-10,-15.04,0,-11" HorizontalAlignment="Left" ValueChanged="OptionValueChanged" 
+					SmallChange="0" Height="150"/>
+				<s:SurfaceSlider Visibility="Hidden" x:Name="OptionSlider2" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Maximum="49" IsSnapToTickEnabled="True"
+					Orientation="Vertical" Style="{DynamicResource InstanceControlSurfaceSliderStyle}" Value="49"
+					Ticks="0,11.2,22.4,33.6,49" Margin="-10,-15,0,-11" HorizontalAlignment="Left" ValueChanged="OptionValueChanged" 
+					SmallChange="0" Height="176"/>
+			</Grid>	
+		</Grid>	
+		
+	</Grid>
+</UserControl>
